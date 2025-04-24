@@ -1,0 +1,28 @@
+{
+  "results": [
+    {
+      "poster_path": "/p6AbOJvMQhBmffd0PIv0u8ghWeY.jpg",
+      "title": "The Garfield movie",
+      "vote_average": 5,
+      "vote_count": 10
+    },
+    {
+      "poster_path": "/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg",
+      "title": "Deadpool and Wolverine",
+      "vote_average": 4,
+      "vote_count": 10
+    },
+    {
+      "poster_path": "/mubt4bnVfpJ5lBMq93DidEuMkJr.jpg",
+      "title": "Sonic the Hedgehog 3",
+      "vote_average": 3,
+      "vote_count": 10
+    },
+    {
+      "poster_path": "/kDp1vUBnMpe8ak4rjgl3cLELqjU.jpg",
+      "title": "Kung Fu Panda 4",
+      "vote_average": 2,
+      "vote_count": 10
+    }
+  ]
+}

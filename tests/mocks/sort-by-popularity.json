@@ -1,0 +1,24 @@
+{
+  "results": [
+    {
+      "popularity": 5,
+      "poster_path": "/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg",
+      "title": "Deadpool and Wolverine"
+    },
+    {
+      "popularity": 4,
+      "poster_path": "/p6AbOJvMQhBmffd0PIv0u8ghWeY.jpg",
+      "title": "The Garfield movie"
+    },
+    {
+      "popularity": 3,
+      "poster_path": "/mubt4bnVfpJ5lBMq93DidEuMkJr.jpg",
+      "title": "Sonic the Hedgehog 3"
+    },
+    {
+      "popularity": 2,
+      "poster_path": "/kDp1vUBnMpe8ak4rjgl3cLELqjU.jpg",
+      "title": "Kung Fu Panda 4"
+    }
+  ]
+}
