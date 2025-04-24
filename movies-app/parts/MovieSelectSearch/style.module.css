@@ -1,0 +1,19 @@
+
+.container {
+  width: 100%;
+}
+
+.input {
+  box-shadow: none !important;
+}
+
+.select {
+  border: none;
+}
+
+.option {
+  height: 96px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}

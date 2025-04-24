@@ -1,0 +1,24 @@
+{
+  "name": "tests",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "cd movies-app && npm run dev",
+    "build": "cd movies-app && next build",
+    "start": "cd movies-app && next start",
+    "pretest": "tsc --noEmit && eslint tests/**/*.ts",
+    "test": "playwright test",
+    "format": "prettier --write tests/**/*"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.5.4",
+    "eslint": "^9.25.1",
+    "prettier": "^3.4.2",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.31.0"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true // Important for linting without compiling
+    // Add other options relevant to your project (e.g., "jsx": "react-jsx")
+  },
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.mjs"],
+  "exclude": ["node_modules"]
+}
