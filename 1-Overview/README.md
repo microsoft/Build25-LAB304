@@ -50,11 +50,10 @@ Open the file `playwright.config.ts`. Let’s look at a few important parts:
 
 Let’s run the application so you can test it.
 
-1. **Open a terminal**, and navigate into the `movies-app/` folder:
+1. **Open a terminal**:
 
    ```bash
    npm install
-   cd movies-app
    npm run dev
    ```
 
