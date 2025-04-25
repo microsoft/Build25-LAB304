@@ -4,7 +4,7 @@ This section will guide you through using Playwright's tagging and annotation fe
 
 ## Understanding Tags
 
-**Tags (`@tag`)** are labels you add to test titles or `describe` blocks (e.g., `@smoke`, `@auth`). They allow you to categorize tests and run specific groups using the `-g` or `--grep` flag (e.g., `npx playwright test -g @smoke`).
+**Tags (`@tag`)** are labels you add to tests or whole `describe` blocks (e.g., `@smoke`, `@auth`). They allow you to categorize tests and run specific groups using the `-g` or `--grep` flag (e.g., `npx playwright test -g @smoke`).
 
 **Common Tagging Strategies:**
 
