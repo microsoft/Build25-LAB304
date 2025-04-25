@@ -50,7 +50,7 @@ Open the file `playwright.config.ts`. Let’s look at a few important parts:
 
 Let’s run the application so you can test it.
 
-1. **Open a terminal**:
+1. [] **Open a terminal**:
 
    ```bash
    npm install
@@ -59,13 +59,13 @@ Let’s run the application so you can test it.
 
    This starts the app on `http://localhost:3000`.
 
-2. **Open a second terminal** at the project root (same level as `tests/` and `playwright.config.ts`).
+2. [] **Open a second terminal** at the project root (same level as `tests/` and `playwright.config.ts`).
 
 ---
 
 ## ✅ Run Your First Test
 
-Now let’s run a test from the `logged-out` folder.
+1. [] Now let’s run a test from the `logged-out` folder.
 
 ```bash
 npx playwright test tests/logged-out/movie-list.spec.ts

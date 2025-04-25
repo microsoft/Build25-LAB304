@@ -1,4 +1,4 @@
-# Debugging Tests with Playwright UI Mode and AI Assistance
+# 4. Debugging Tests with Playwright UI Mode and AI Assistance
 
 ## Goal
 
@@ -11,8 +11,8 @@ ols like GitHub Copilot Chat directly from UI Mode to help diagnose and fix fail
 
 ## Running Tests in UI Mode
 
-1.  **Open your terminal.**
-2.  **Run the UI Mode command:**
+1. [] **Open your terminal.**
+2. [] **Run the UI Mode command:**
     ```bash
     npx playwright test --ui
     ```
@@ -21,24 +21,25 @@ ols like GitHub Copilot Chat directly from UI Mode to help diagnose and fix fail
 
 ### Stepping Through Test Execution
 
-1.  **Select a Test:** In UI Mode, click on any test (passing or failing) in the left sidebar.
-2.  **Use the Timeline:** The central panel shows a timeline of actions performed during the test run.
-3.  **Inspect Actions:** Click on any action in the timeline (e.g., `page.click`, `page.fill`). UI Mode will highlight the corresponding element on the page snapshot (Before/After) and show details like execution time and parameters.
+1. [] **Select a Test:** In UI Mode, click on any test (passing or failing) in the left sidebar.
+2. [] **Use the Timeline:** The central panel shows a timeline of actions performed during the test run.
+3. [] **Inspect Actions:** Click on any action in the timeline (e.g., `page.click`, `page.fill`). UI Mode will highlight the corresponding element on the page snapshot (Before/After) and show details like execution time and parameters.
 4.  **Time Travel:** Use the slider or click directly on actions to "time travel" through the test execution, observing the page state at each step.
 
 
 ## Debugging a Failing Test with AI
 
-1.  **Identify the Failing Test:** In the UI Mode window, failing tests will be marked clearly (usually with a red 'x'). Click on the failed test in the left-hand sidebar to select it.
-2.  **Navigate to the Errors Tab:** In the central panel displaying the test details, locate and click on the **Errors** tab. This tab shows the specific error message, the call log leading up to the failure, and often a snapshot of the page state when the error occurred.
-3.  **Copy the AI Prompt:** Within the **Errors** tab, look for a button labeled **Copy Prompt**. Clicking this button copies a pre-formatted prompt containing the error details, test source code, and page snapshot to your clipboard.
-4.  **Paste into Copilot Chat:** Open GitHub Copilot Chat in your VS Code editor. Paste the content you just copied from the Playwright UI Mode directly into the chat input.
-5.  **Ask for Help:** Copilot Chat will receive the context of the failed test and the error. Ask it to explain the failure and suggest a fix, for example: "Explain why this test failed and provide a fix."
+1. [] **Identify the Failing Test:** In the UI Mode window, failing tests will be marked clearly (usually with a red 'x'). Click on the failed test in the left-hand sidebar to select it.
+2. [] **Navigate to the Errors Tab:** In the central panel displaying the test details, locate and click on the **Errors** tab. This tab shows the specific error message, the call log leading up to the failure, and often a snapshot of the page state when the error occurred.
+3. [] **Copy the AI Prompt:** Within the **Errors** tab, look for a button labeled **Copy Prompt**. Clicking this button copies a pre-formatted prompt containing the error details, test source code, and page snapshot to your clipboard.
+4. [] **Paste into Copilot Chat:** Open GitHub Copilot Chat in your VS Code editor. Paste the content you just copied from the Playwright UI Mode directly into the chat input.
+5. [] **Ask for Help:** Copilot Chat will receive the context of the failed test and the error. Ask it to explain the failure and suggest a fix, for example: "Explain why this test failed and provide a fix."
 
 Copilot Chat can analyze the provided information and often pinpoint the cause of the error (like a timing issue, incorrect locator, or flawed assertion) and suggest code modifications based on Playwrights best practices.
 
 Fix the test in VS Code based on Copilot's suggestions. You can also ask follow-up questions for further clarification or assistance.
-6.  **Re-run the Test:** After making the suggested changes, return to the Playwright UI Mode and re-run the test if you haven't activated watch mode, to verify if the issue is resolved. 
+
+6. [] **Re-run the Test:** After making the suggested changes, return to the Playwright UI Mode and re-run the test if you haven't activated watch mode, to verify if the issue is resolved. 
 
 ## Viewing Traces
 
@@ -52,14 +53,16 @@ First let's ensure we still have a failing test. Undo the fix from the last step
 
 A common strategy is to only record a trace when a test fails and is retried for the first time. This avoids generating large trace files for every successful run but captures the necessary details when a failure occurs.
 
-1.  **Review the `playwright.config.ts`:** Open your Playwright configuration file.
-2.  **Set `retries`:** Ensure you have retries enabled in your CI environment configuration within the config file. `on-first-retry` only works if retries are greater than 0.
-3.  **Set `trace` option:** In the `use` block of your configuration (potentially within a specific configuration for CI), set the `trace` option to `'on-first-retry'`.
+1. [] **Review the `playwright.config.ts`:** Open your Playwright configuration file.
+2. [] **Set `retries`:** Ensure you have retries enabled in your CI environment configuration within the config file. `on-first-retry` only works if retries are greater than 0.
+3. [] **Set `trace` option:** In the `use` block of your configuration (potentially within a specific configuration for CI), set the `trace` option to `'on-first-retry'`.
 
 
 ### Accessing the Trace in the HTML Report
 
-When tests run locally (e.g., using `npx playwright test`), Playwright generates an HTML report in the `playwright-report` folder. Open the report with `npx playwright show-report` and navigate to the test you want to inspect, and click the trace icon next to the test run. This opens the Trace Viewer directly in your browser, allowing you to step through the execution, view snapshots, and inspect network requests.
+When tests run locally (e.g., using `npx playwright test`), Playwright generates an HTML report in the `playwright-report` folder. 
+
+1. [] Open the report with `npx playwright show-report` and navigate to the test you want to inspect, and click the trace icon next to the test run. This opens the Trace Viewer directly in your browser, allowing you to step through the execution, view snapshots, and inspect network requests.
 
 The same HTML report can be generated and accessed from CI runs; you'll typically download it as an artifact. For detailed guidance on configuring trace uploads and viewing reports in various CI environments, refer to the official [Playwright documentation on Trace Viewer](https://playwright.dev/docs/trace-viewer) and CI integrations.
 

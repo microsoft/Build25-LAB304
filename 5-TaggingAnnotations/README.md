@@ -1,4 +1,6 @@
-# Goal: Organize and Manage Tests with Tags and Annotations
+# 5. Organize and Manage Tests with Tags and Annotations
+
+## Goal
 
 This section will guide you through using Playwright's tagging and annotation features. You'll learn how to categorize tests using tags for selective runs and how to use annotations to control test execution (like skipping tests) or add metadata (like linking to bug reports).
 
@@ -16,8 +18,8 @@ This section will guide you through using Playwright's tagging and annotation fe
 
 ## Step 1: Add a Tag to Movie List Tests
 
-1.  **Open:** `tests/logged-out/movie-list.spec.ts`.
-2.  **Add:** Add the `@movies` tag to the `test` functions in this file.
+1. [] **Open:** `tests/logged-out/movie-list.spec.ts`.
+2. [] **Add:** Add the `@movies` tag to the `test` functions in this file.
 
 ```ts
 // Example: tests/logged-out/movie-list.spec.ts
@@ -36,7 +38,7 @@ test('dynamic content for first upcoming movie', {
 
 ## Step 2: Run Tagged Tests
 
-1.  **Run only tests with the `@movies` tag:**
+1. [] **Run only tests with the `@movies` tag:**
     *   Use the following command in your terminal:
 
 ```bash
@@ -58,8 +60,8 @@ npx playwright test --grep-invert @movies
 
 ## Step 3: Skip a Test
 
-1.  **Open:** `tests/logged-out/movie-list.spec.ts`.
-2.  **Modify:** Add `.skip` to the first test function to prevent it from running.
+1. [] **Open:** `tests/logged-out/movie-list.spec.ts`.
+2. [] **Modify:** Add `.skip` to the first test function to prevent it from running.
 
 ```ts
 // Example: tests/logged-out/movie-list.spec.ts
@@ -74,8 +76,8 @@ test.skip('Avengers: Infinity is the first top rated movie', {
 
 Annotations are useful for linking tests to external information, like bug reports.
 
-1.  **Open:** `tests/logged-out/movie-list.spec.ts`.
-2.  **Modify:** Add an annotation object to the second test, linking it to a hypothetical GitHub issue.
+1. [] **Open:** `tests/logged-out/movie-list.spec.ts`.
+2. [] **Modify:** Add an annotation object to the second test, linking it to a hypothetical GitHub issue.
 
 ```ts
 // Example: tests/logged-out/movie-list.spec.ts
@@ -94,13 +96,13 @@ test('dynamic content for first upcoming movie', {
 
 Now, let's run the tagged tests again to see the effect of the skip and the annotation.
 
-1.  **Run Tests:**
+1. [] **Run Tests:**
     *   Use the command line to run tests tagged with `@movies`:
 
     ```bash
     npx playwright test --grep @movies
     ```
-2.  **View Report:**
+2. [] **View Report:**
     *   Open the HTML report:
 
     ```bash

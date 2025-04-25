@@ -1,4 +1,6 @@
-# Goal: Speed Up Test Execution with Sharding
+# 6. Speed Up Test Execution with Sharding
+
+## Goal
 
 This section explains how to use Playwright's sharding feature to significantly reduce the time it takes to run your test suite. You'll learn how to split your tests across multiple parallel jobs, both locally and within a GitHub Actions workflow.
 
