@@ -53,8 +53,8 @@ Let’s run the application so you can test it.
 1. **Open a terminal**, and navigate into the `movies-app/` folder:
 
    ```bash
-   cd movies-app
    npm install
+   cd movies-app
    npm run dev
    ```
 
