@@ -53,12 +53,12 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
-    - name: Run Playwright tests (Shard \${{ matrix.shardIndex }} of \${{ matrix.shardTotal }})
-      run: npx playwright test --shard=\${{ matrix.shardIndex }}/\${{ matrix.shardTotal }} # Use matrix variables
+    - name: Run Playwright tests (Shard ${{ matrix.shardIndex }} of ${{ matrix.shardTotal }})
+      run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} # Use matrix variables
     - uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: playwright-report-\${{ matrix.shardIndex }}-\${{ matrix.shardTotal }}
+        name: playwright-report-${{ matrix.shardIndex }}-${{ matrix.shardTotal }}
         path: playwright-report/
         retention-days: 30
 ```
