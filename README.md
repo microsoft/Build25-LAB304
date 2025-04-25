@@ -1,44 +1,43 @@
-# Playwright Movies App
+# Build 2025 Lab 304: Real-World, Enterprise-Scale End-to-End Testing with Playwright
 
-This repository provides a comprehensive guide to writing end-to-end tests with [Playwright](https://playwright.dev/), covering a wide range of scenarios to ensure your application is robust and reliable. Learn how to write tests for Authentication, Search, Sorting, API and API mocking, ARIA snapshots, and more.
+In this lab, you will dive into end-to-end testing with Playwright using a sample movies app. You'll learn to generate tests with Codegen, write robust assertions including ARIA snapshots, manage credentials securely, debug effectively using UI Mode and traces, organize tests with tags and annotations, and optimize execution speed with sharding.
 
-The source code is a demo Movies App built with Next.js and React, utilizing the [The Movie Database (TMDB)](https://www.themoviedb.org/) API for testing purposes. This project is a fork of [next-movies](https://github.com/tastejs/next-movies) and has been customized to meet our specific requirements.
+The source code includes a demo Movies App built with Next.js and React, utilizing the [The Movie Database (TMDB)](https://www.themoviedb.org/) API for testing purposes. This project is a fork of [next-movies](https://github.com/tastejs/next-movies) and has been customized for this lab.
 
 ![Playwright Movies App](movies-app-ui-mode.jpg)
 
-## Installation 
+## Agenda
 
-Install the dependencies:
+Follow these sections in sequence to learn key Playwright concepts:
 
-```bash
-npm install
-```
+1.  [Overview of Playwright, Project Structure, and Config](./1-Overview/README.md)
+2.  [Generating Tests with Codegen and Managing Credentials](./2-CreatingTests/README.md)
+3.  [Using Aria Snapshots and Creating Helper Functions](./3-AriaSnapshots/README.md)
+4.  [Debugging Tests with UI Mode, AI, and Traces](./4-Debugging/README.md)
+5.  [Organizing Tests with Tags and Annotations](./5-TaggingAnnotations/README.md)
+6.  [Bonus: Speeding Up Tests with Sharding](./Bonus-Sharding/README.md)
+
+## Check-in
+
+By completing all sections of this lab, you should have a solid understanding of how to:
+
+*   Set up and configure a Playwright testing environment.
+*   Generate initial test code using Playwright Codegen.
+*   Write effective assertions, including accessibility checks with `toMatchAriaSnapshot`.
+*   Securely manage sensitive data like credentials using environment variables.
+*   Refactor tests using helper functions for better maintainability.
+*   Debug test failures efficiently using Playwright UI Mode, AI assistance (like Copilot Chat), and trace files.
+*   Organize your test suite using tags and annotations for selective runs and metadata.
+*   (Bonus) Optimize test execution time in CI/CD pipelines using sharding.
+
+You should now be equipped to apply these techniques to build robust and scalable end-to-end test suites for real-world applications using Playwright.
+
+## Playwright Resources
+
+-   [Playwright Documentation](https://playwright.dev/docs/intro)
+-   [Playwright API Reference](https://playwright.dev/docs/api/class-playwright)
+-   [Playwright VS Code Extension](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright)
+-   [Playwright on GitHub](https://github.com/microsoft/playwright)
 
 
-## Environment Setup for Login Tests
 
-To run the login tests, you need to set up environment variables in a `.env` file. You can do this by renaming the `.env.example` file to `.env`, which already contains the necessary variables. Note that this app uses a mock backend, so any username and password will work.
-
-## Running Tests
-
-Run the tests using UI mode to walk through a trace of each test:
-
-```bash
-npx playwright test --ui
-```
-
-Alternatively, you can run the tests directly in VS Code with the [Playwright VS Code extension](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright).
-
-
-## Running the APP locally
-
-Make sure port 3000 is available as the app needs to run on this port. Using a different port will result in errors because the movies loaded from the API use this port.
-
-* `npm run dev`: dev build
-* `npm run build`: production build
-* `npm run start`: start the project
-
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
