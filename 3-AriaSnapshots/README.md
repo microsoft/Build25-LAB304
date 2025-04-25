@@ -1,4 +1,4 @@
-# Aria Snapshots and Helper Functions
+# 3. Aria Snapshots and Helper Functions
 
 ## Goal
 
@@ -6,12 +6,12 @@ This section focuses on using Playwright's Codegen to generate a search test, an
 
 ## Step 1: Record the Search Interaction
 
-1.  In the browser window opened by Codegen, interact with your application as a user would to perform a search:
-    *   Navigate to the home page (e.g., `http://localhost:3000`).
-    *   Click the search icon or field.
-    *   Type your search term (e.g., "Twisters").
-    *   Press Enter or click the search button.
-    *   Click on the search results link to navigate to the movie detail page.
+1. In the browser window opened by Codegen, interact with your application as a user would to perform a search:
+    * []  Navigate to the home page (e.g., `http://localhost:3000`).
+    * [] Click the search icon or field.
+    * [] Type your search term (e.g., "Twisters").
+    * [] Press Enter or click the search button.
+    * [] Click on the search results link to navigate to the movie detail page.
 
 As you interact with the browser, Playwright Codegen will automatically generate the corresponding test code in the Playwright Inspector window.
 
@@ -29,10 +29,10 @@ test('search for "Twisters" movie', async ({ page }) => {
 ```
 ## Step 2: Generate Assertions
 Use the Codegen toolbar to add assertions.
-   - click on the assert text icon. This assertion checks the text of the element within the specified locator.
-   - click on the text you want to assert (the main heading)
-   - click on the assert snapshot. This assertion checks the accessible name and role of elements within the specified locator.
-   - click on the text you want to assert (the main heading).
+   - [] click on the assert text icon. This assertion checks the text of the element within the specified locator.
+   - [] click on the text you want to assert (the main heading)
+   - [] click on the assert snapshot. This assertion checks the accessible name and role of elements within the specified locator.
+   - [] click on the text you want to assert (the main heading).
 
 
 ```ts
@@ -57,8 +57,8 @@ Feel free to remove the `toHaveText` assertion and keep only the `toMatchAriaSna
 
 Before you click the link to the movie detail page, you can add assertions to check the state of the application. Here are some examples:
 
-`toHaveURL`: Use this to check if the page URL is correct or contains expected parameters. You can use a string for an exact match or a Regular Expression (/ /) for partial matches (useful for query parameters).
-`toHaveAttribute`: Use this to check if a specific element (found using a locator) has a particular attribute with the expected value. Again, the value can be a string or a Regular Expression.
+1. [] `toHaveURL`: Use this to check if the page URL is correct or contains expected parameters. You can use a string for an exact match or a Regular Expression (/ /) for partial matches (useful for query parameters).
+2. [] `toHaveAttribute`: Use this to check if a specific element (found using a locator) has a particular attribute with the expected value. Again, the value can be a string or a Regular Expression.
 
 ```ts
 await expect(page).toHaveURL(/searchTerm=twisters/);
@@ -68,8 +68,8 @@ await expect(page.getByRole('list').getByLabel('movie').getByRole('img')).toHave
  
 ### Step 4: Run the Test
 
-1.  Save your test file.
-2.  Run the test using the VS Code Test Explorer (click the play button next to the test) or the command line:
+1. [] Save your test file.
+2. [] Run the test using the VS Code Test Explorer (click the play button next to the test) or the command line:
    
 ```bash
 npx playwright test search.spec.ts
@@ -98,11 +98,11 @@ test('search for "Twisters" movie and navigate to details page', async ({ page }
 ```
 
 ### Step 5: Create another test for a movie that does not exist
-1.  Use Codegen to record the search interaction for a movie that does not exist (e.g., "NonExistentMovie").
-2.  Add assertions to check the state of the application when no results are found. For example:
+1. [] Use Codegen to record the search interaction for a movie that does not exist (e.g., "NonExistentMovie").
+2. [] Add assertions to check the state of the application when no results are found. For example:
     *   use `toHaveURL` to check the search term.
     *   Use `toMatchAriaSnapshot` to verify the message displayed when no results are found.
-3. Check that you can navigate back to the home page.
+3. [] Check that you can navigate back to the home page.
 
 ```ts
 import { test, expect } from '@playwright/test';
@@ -134,9 +134,9 @@ test('search for "NonExistentMovie" movie', async ({ page }) => {
 
 ### Step 6: Create a Reusable Search Function
 
-1.  Create a helper function in your test file to encapsulate the search logic. This function should take the movie name as an argument and perform the search.
-2.  Create a reusable locator for the search input field `const searchInput = `. This will help in maintaining the code and making it easier to update if the locator changes in the future.
-3.  Use `test.step` to create a step for the search action. This will help in organizing your test and making it more readable.
+1. [] Create a helper function in your test file to encapsulate the search logic. This function should take the movie name as an argument and perform the search.
+2. [] Create a reusable locator for the search input field `const searchInput = `. This will help in maintaining the code and making it easier to update if the locator changes in the future.
+3. [] Use `test.step` to create a step for the search action. This will help in organizing your test and making it more readable.
 
 ```ts
 import { test, expect, Page } from '@playwright/test';
@@ -155,7 +155,8 @@ async function searchForMovie(page: Page, movie: string) {
 ```
 
 ### Step 7: Refactor the Test
-Call your `searchForMovie` helper function in both your tests passing in the `page` and the movie name.
+
+1. [] Call your `searchForMovie` helper function in both your tests passing in the `page` and the movie name.
 
 ```ts
 test('search for "Twisters" movie', async ({ page }) => {
@@ -174,6 +175,8 @@ test('search for "NonExistentMovie" movie', async ({ page }) => {
 ```
 
 ### Step 9: Run your test to ensure it works correctly.
+
+1. [] Run your test in VS Code or by using the command line:
 
 ```bash
 npx playwright test search.spec.ts
