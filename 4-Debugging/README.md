@@ -12,10 +12,7 @@ ols like GitHub Copilot Chat directly from UI Mode to help diagnose and fix fail
 ## Running Tests in UI Mode
 
 1. [] **Open your terminal.**
-2. [] **Run the UI Mode command:**
-    ```bash
-    npx playwright test --ui
-    ```
+2. [] **Run the UI Mode command:** `npx playwright test --ui`
     This will open the Playwright UI Mode window, listing all your tests.
 3. Press the play button to run all tests or select specific tests to run by clicking on them in the left-hand sidebar.
 
@@ -23,7 +20,7 @@ ols like GitHub Copilot Chat directly from UI Mode to help diagnose and fix fail
 
 1. [] **Select a Test:** In UI Mode, click on any test (passing or failing) in the left sidebar.
 2. [] **Use the Timeline:** The central panel shows a timeline of actions performed during the test run.
-3. [] **Inspect Actions:** Click on any action in the timeline (e.g., `page.click`, `page.fill`). UI Mode will highlight the corresponding element on the page snapshot (Before/After) and show details like execution time and parameters.
+3. [] **Inspect Actions:** Click on any action in the timeline (e.g., **page.click**, **page.fill**). UI Mode will highlight the corresponding element on the page snapshot (Before/After) and show details like execution time and parameters.
 4.  **Time Travel:** Use the slider or click directly on actions to "time travel" through the test execution, observing the page state at each step.
 
 
@@ -53,14 +50,14 @@ First let's ensure we still have a failing test. Undo the fix from the last step
 
 A common strategy is to only record a trace when a test fails and is retried for the first time. This avoids generating large trace files for every successful run but captures the necessary details when a failure occurs.
 
-1. [] **Review the `playwright.config.ts`:** Open your Playwright configuration file.
-2. [] **Set `retries`:** Ensure you have retries enabled in your CI environment configuration within the config file. `on-first-retry` only works if retries are greater than 0.
-3. [] **Set `trace` option:** In the `use` block of your configuration (potentially within a specific configuration for CI), set the `trace` option to `'on-first-retry'`.
+1. [] **Review the **playwright.config.ts**:** Open your Playwright configuration file.
+2. [] **Set **retries**:** Ensure you have retries enabled in your CI environment configuration within the config file. **on-first-retry** only works if retries are greater than 0.
+3. [] **Set **trace** option:** In the **use** block of your configuration (potentially within a specific configuration for CI), set the **trace** option to **'on-first-retry'**.
 
 
 ### Accessing the Trace in the HTML Report
 
-When tests run locally (e.g., using `npx playwright test`), Playwright generates an HTML report in the `playwright-report` folder. 
+When tests run locally (e.g., using `npx playwright test`), Playwright generates an HTML report in the **playwright-report** folder. 
 
 1. [] Open the report with `npx playwright show-report` and navigate to the test you want to inspect, and click the trace icon next to the test run. This opens the Trace Viewer directly in your browser, allowing you to step through the execution, view snapshots, and inspect network requests.
 

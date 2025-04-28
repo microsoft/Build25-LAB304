@@ -50,26 +50,20 @@ Open the file `playwright.config.ts`. Let’s look at a few important parts:
 
 Let’s run the application so you can test it.
 
-1. [] **Open a terminal**:
-
-   ```bash
-   npm install
-   npm run dev
-   ```
-
-   This starts the app on `http://localhost:3000`.
-
+1. [] **Open a terminal and install dependencies**:
+`npm install`
+   
 2. [] **Open a second terminal** at the project root (same level as tests/ and playwright.config.ts).
+`npm run dev`
+
+This starts the app on **http://localhost:3000**.
 
 ---
 
 ## ✅ Run Your First Test
+1. [] **Open a second terminal** at the project root (same level as tests/ and playwright.config.ts) and run the movie-list test.
 
-1. [] Now let’s run the movie-list test.
-
-```bash
-npx playwright test movie-list.spec.ts
-```
+`npx playwright test movie-list.spec.ts`
 
 You’ll see Playwright launch a browser, run the test, and print the result in the terminal.
 
