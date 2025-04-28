@@ -6,7 +6,7 @@ In this section, you'll learn how to automatically generate Playwright test code
 
 Playwright Codegen is a tool that helps you automatically generate test code. It works by recording your interactions (like clicks, typing, navigation) as you use your web application in a browser window controlled by Playwright.
 
-As you interact, Codegen translates these actions into Playwright test script code. This generated code can then be saved into a test file, providing a quick starting point for writing your end-to-end tests. You can use Codegen either through the integrated Playwright VS Code extension or via a command-line interface (npx playwright codegen).
+As you interact, Codegen translates these actions into Playwright test script code. This generated code can then be saved into a test file, providing a quick starting point for writing your end-to-end tests. You can use Codegen either through the integrated Playwright VS Code extension or via a command-line interface (npx playwright's Codegen).
 
 ## Method 1: Using the VS Code Extension (Recommended)
 
@@ -55,31 +55,13 @@ Playwright's Codegen tool is a command-line alternative for recording tests.
 7. [] **Paste and refine the code:**
     Paste the copied code. You'll likely need to:
     *   Review the generated code.
-    *   Add or refine assertions (`expect()`) if needed.
+    *   Add or refine assertions (**expect()**) if needed.
 8. [] **Run your new test:**
     Save the file and run tests (`npx playwright test`).
 
-## Storing Credentials Securely with a `.env` File
+## Storing Credentials Securely with a .env File
 
-It's important not to hardcode sensitive information like usernames and passwords directly into your tests. A common practice is to use environment variables stored in a `.env` file.
-
-1. [] **Create a `.env` file:**
-    In the root directory of your project (the same level as `playwright.config.ts`), create a file named `.env`.
-
-2. [] **Add your credentials:**
-    Open the `.env` file and add your username and password in the following format or copy the lines from the `.env.example` file:
-
-    ```dotenv
-    MOVIES_USERNAME=your_email@example.com
-    MOVIES_PASSWORD=your_secure_password
-    ```
-    This is a dummy login, so you can actually use any credentials, and it will work to log in to the application in the test environment.
-
-3. [] **Ignore the `.env` file:**
-    To prevent accidentally committing your credentials to version control (like Git), ensure the `.env` file has been added to your `.gitignore` file.
-
-4. [] **Using the variables in tests:**
-    Playwright automatically loads variables from the `.env` file into `process.env`. You can access them in your test files like this:
+It's important not to hardcode sensitive information like usernames and passwords directly into your tests. A common practice is to use environment variables stored in a **.env** file. We have safely stored the credentials for you so now you just need to update the test to use them.
 
     ```typescript
     // Example usage in a test file
@@ -92,9 +74,9 @@ It's important not to hardcode sensitive information like usernames and password
     ```
     The `!` tells TypeScript that you are sure these variables will be defined (because they are loaded from `.env`).
 
-5. [] **Run your new test:**
+1. [] **Run your new test:**
     Save the file and run your tests using the Playwright command (e.g., `npx playwright test auth.spec.ts`) to ensure the generated test works correctly or run the test using the VS Code extension by clicking the play button next to the test.
 
 ## Check-in
 
-Compare your generated `auth.spec.ts` file with the one provided in the `solution` folder for this section. Verify that your test correctly performs the login and logout steps and utilizes environment variables for the username and password, rather than hardcoding them.
+Compare your generated **auth.spec.ts** file with the one provided in the **solution** folder for this section. Verify that your test correctly performs the login and logout steps and utilizes environment variables for the username and password, rather than hardcoding them.

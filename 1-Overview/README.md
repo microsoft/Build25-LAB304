@@ -18,15 +18,15 @@ In this section, you'll get familiar with the project setup and run your first P
 
 Here's a quick look at the folder layout:
 
-- **`movies-app/`**  
+- **movies-app/**  
   The [Next.js](https://nextjs.org/) application you'll be testing.  
-- **`tests/`**  
+- **tests/**  
   Where the Playwright test files live. You'll see folders like:
-  - `logged-in/`
-  - `logged-out/`
-  - `helpers/` (utility functions)
-  - `mocks/` (API mocking utilities)
-- **`playwright.config.ts`**  
+  - logged-in/
+  - logged-out/
+  - helpers/ (utility functions)
+  - mocks/ (API mocking utilities)
+- **playwright.config.ts**  
   The main config file for Playwright tests.
 
 ---
@@ -35,13 +35,13 @@ Here's a quick look at the folder layout:
 
 Open the file `playwright.config.ts`. Let’s look at a few important parts:
 
-- **`baseURL: 'http://localhost:3000'`**  
+- **baseURL: 'http://localhost:3000'**  
   This tells Playwright where your app will be running. Make sure the app is running before you run tests!
 
-- **`workers`**  
+- **workers**  
   This controls how many tests run in parallel. We’ll modify this later in the workshop.
 
-- **`trace: 'on-first-retry'`**  
+- **trace: 'on-first-retry'**  
   This enables trace recording *only if* a test fails and retries.
 
 ---
@@ -59,16 +59,16 @@ Let’s run the application so you can test it.
 
    This starts the app on `http://localhost:3000`.
 
-2. [] **Open a second terminal** at the project root (same level as `tests/` and `playwright.config.ts`).
+2. [] **Open a second terminal** at the project root (same level as tests/ and playwright.config.ts).
 
 ---
 
 ## ✅ Run Your First Test
 
-1. [] Now let’s run a test from the `logged-out` folder.
+1. [] Now let’s run the movie-list test.
 
 ```bash
-npx playwright test tests/logged-out/movie-list.spec.ts
+npx playwright test movie-list.spec.ts
 ```
 
 You’ll see Playwright launch a browser, run the test, and print the result in the terminal.
@@ -77,8 +77,7 @@ You’ll see Playwright launch a browser, run the test, and print the result in 
 
 ## 💬 What’s Happening?
 
-Take a moment to skim the test file:
-`tests/logged-out/movie-list.spec.ts`
+Take a moment to skim the test file: tests/logged-out/movie-list.spec.ts
 
 - What is it trying to verify?
 - Is it checking elements, navigation, or content?
