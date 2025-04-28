@@ -75,6 +75,10 @@ test.describe('Movie Details Page - Links', () => {
       tag: '@iframe',
     },
     async ({ page }) => {
+      await page.context().route('*://www.youtube.com/**/*', route => route.fulfill({
+        contentType: 'text/html',
+        body: '<h1>YouTube Player for </h1><a href="#">Twisters</a>',
+      }));
       await page.getByRole('button', { name: 'Trailer' }).click();
       await expect(page.frameLocator('iframe').getByRole('link', { name: 'Twisters' }))
         .toBeVisible();
