@@ -9,8 +9,9 @@ test('search for "Twisters" movie', async ({ page }) => {
   await expect(page).toHaveURL(/searchTerm=twisters/);
 
   // Verify that the search results contain an image with the alt text matching 'Twisters'
-  await expect(page.getByRole('list').getByLabel('movie').getByRole('img'))
-    .toHaveAttribute('alt', /Twisters/);
+  await expect(
+    page.getByLabel('movie').filter({ hasText: 'Twisters' }).locator('img[alt="poster of Twisters"]')
+  ).toBeVisible();
 
   // Click on the link for the movie 'Twisters'
   await page.getByRole('link', { name: /twisters/i }).click();
