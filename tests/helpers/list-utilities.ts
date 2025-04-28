@@ -83,6 +83,7 @@ export async function addImageToList(page: Page, movieName: string) {
   await test.step('add image to list', async () => {
     // Click on the "Choose Image" link
     await page.getByRole('link', { name: 'Choose Image' }).click();
+    await page.waitForURL('/list/choose-image*');
 
     // Find the movie list item and verify its heading contains the movie name
     const movie = page.getByRole('listitem', { name: 'movie' });
