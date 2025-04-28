@@ -6,12 +6,11 @@ This section focuses on using Playwright's Codegen to generate a search test, an
 
 ## Step 1: Record the Search Interaction
 
-1. In the browser window opened by Codegen, interact with your application as a user would to perform a search:
+1. Start a new recording by pressing **Record new** in the testing sidebar. In the browser window opened by Codegen, interact with your application as a user would to perform a search:
     * [] Navigate to the home page (e.g., `http://localhost:3000`).
     * [] Click the search icon or field.
     * [] Type your search term (e.g., "Twisters").
     * [] Press Enter or click the search button.
-    * [] Click on the search results link to navigate to the movie detail page.
 
 As you interact with the browser, Playwright's Codegen will automatically generate the corresponding test code in the Playwright Inspector window.
 
@@ -24,15 +23,13 @@ test('search for "Twisters" movie', async ({ page }) => {
   await page.getByPlaceholder('Search for a movie...').click();
   await page.getByPlaceholder('Search for a movie...').fill('twisters');
   await page.getByPlaceholder('Search for a movie...').press('Enter');
-  await page.getByRole('link', { name: "Twisters" }).click();
 });
 ```
+
 ## Step 2: Generate Assertions
 Use the Codegen toolbar to add assertions.
-   - [] click on the assert text icon. This assertion checks the text of the element within the specified locator.
-   - [] click on the text you want to assert (the main heading)
-   - [] click on the assert snapshot. This assertion checks the accessible name and role of elements within the specified locator.
-   - [] click on the text you want to assert (the main heading).
+  - [] click on the assert text icon and click on the main page heading. This assertion checks the text of the element within the specified locator.
+  - [] click on the assert snapshot and click on the movie poster. This assertion checks the accessible name and role of elements within the specified locator.
 
 
 ```ts
@@ -50,9 +47,6 @@ The **toHaveText** assertion targets a specific element, like the **<h1>** headi
 
 In contrast, **toMatchAriaSnapshot** examines a larger region, such as the **<main>** content area, and checks its overall accessible structure—including element roles, names, and levels—against a stored snapshot. While **toHaveText** focuses on the precise visual text of one element, **toMatchAriaSnapshot** validates the semantic structure and accessibility of potentially multiple elements within a section.
 
-Feel free to remove the `toHaveText** assertion and keep only the **toMatchAriaSnapshot** assertion.
-
-
 ### Step 3: Manually add assertions to verify the application's state after the search:
 
 Before you click the link to the movie detail page, you can add assertions to check the state of the application. Here are some examples:
@@ -63,18 +57,14 @@ Before you click the link to the movie detail page, you can add assertions to ch
 ```ts
 await expect(page).toHaveURL(/searchTerm=twisters/);
 
-await expect(page.getByRole('list').getByLabel('movie').getByRole('img')).toHaveAttribute('alt', "Twisters");
+await expect(page.getByRole('list').getByLabel('movie').filter({ hasText: 'Twisters' }).locator('img')).toHaveAttribute('alt', 'poster of Twisters');
 ```
  
 ### Step 4: Run the Test
 
-1. [] Save your test file.
-2. [] Run the test using the VS Code Test Explorer (click the play button next to the test) or the command line:
+1. [] Save your test as **search.spec.ts** file.
+2. [] Run the test using the VS Code Test Explorer (click the play button next to the test) or the command line: `npx playwright test search.spec.ts`
    
-```bash
-npx playwright test search.spec.ts
-```
-
 ### Modify the Test Name (Optional but Recommended)
 
 It's good practice to give your tests descriptive names that clearly state what they are verifying.
@@ -176,11 +166,7 @@ test('search for "NonExistentMovie" movie', async ({ page }) => {
 
 ### Step 9: Run your test to ensure it works correctly.
 
-1. [] Run your test in VS Code or by using the command line:
-
-```bash
-npx playwright test search.spec.ts
-```
+1. [] Run your test in VS Code or by using the command line: `npx playwright test search.spec.ts`
 
 Helper functions are a great way to keep your tests DRY (Don't Repeat Yourself) and make them easier to maintain. By encapsulating the search logic in a function, you can easily reuse it across multiple tests without duplicating code.
 

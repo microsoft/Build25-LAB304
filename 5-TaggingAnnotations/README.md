@@ -6,20 +6,20 @@ This section will guide you through using Playwright's tagging and annotation fe
 
 ## Understanding Tags
 
-**Tags (**@tag**)** are labels you add to tests or whole **describe** blocks (e.g., **@smoke**, **@auth**). They allow you to categorize tests and run specific groups using the **-g** or **--grep** flag (e.g., **npx playwright test -g @smoke**).
+Tags (**@tag**) are labels you add to tests or whole **describe** blocks (e.g., **@smoke**, **@auth**). They allow you to categorize tests and run specific groups using the **-g** or **--grep** flag (e.g., **npx playwright test -g @smoke**).
 
 **Common Tagging Strategies:**
 
-*   **Tag by Feature Area:** This is often the most useful approach.
-    *   Add tags like **@auth** to tests related to login/logout.
-    *   Add **@search** to tests involving search functionality.
-*   **Tag by Test Type/Level:**
-    *   Identify critical path tests covering core functionality (e.g., login, basic search) and tag them with **@smoke** for quick sanity checks.
+* **Tag by Feature Area:** This is often the most useful approach.
+  * Add tags like **@auth** to tests related to login/logout.
+  * Add **@search** to tests involving search functionality.
+* **Tag by Test Type/Level:**
+  * Identify critical path tests covering core functionality (e.g., login, basic search) and tag them with **@smoke** for quick sanity checks.
 
 ## Step 1: Add a Tag to Movie List Tests
 
 1. [] **Open:** **tests/logged-out/movie-list.spec.ts**.
-2. [] **Add:** Add the **@movies** tag to the **test** functions in this file.
+2. [] **Add**: Add the **@movies** tag to the **test** functions in this file.
 
 ```ts
 // Example: tests/logged-out/movie-list.spec.ts
@@ -39,9 +39,9 @@ test('dynamic content for first upcoming movie', {
 ## Step 2: Run Tagged Tests
 
 1. [] **Run only tests with the **@movies** tag:**
-    *   Use the following command in your terminal: `npx playwright test --grep @movies`
+  *   Use the following command in your terminal: `npx playwright test --grep @movies`
 
-*   **Bonus Tip:** To run all tests *except* those with the **@movies** tag, use **--grep-invert**: `npx playwright test --grep-invert @movies`
+**Bonus Tip:** To run all tests *except* those with the **@movies** tag, use **--grep-invert**: `npx playwright test --grep-invert @movies`
 
 ## Understanding Annotations
 
