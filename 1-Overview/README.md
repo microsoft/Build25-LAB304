@@ -46,7 +46,7 @@ This starts the app on **http://localhost:3000**.
 ---
 
 ## ✅ Run Your First Test
-1. [] **Open a second terminal** at the project root (same level as tests/ and playwright.config.ts) and run the movie-list test.
+[] **Open a second terminal** at the project root (same level as tests/ and playwright.config.ts) and run the movie-list test.
 
 `npx playwright test movie-list.spec.ts`
 

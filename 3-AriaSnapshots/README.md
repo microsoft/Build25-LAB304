@@ -6,11 +6,11 @@ This section focuses on using Playwright's Codegen to generate a search test, an
 
 ## Step 1: Record the Search Interaction
 
-1. Start a new recording by pressing **Record new** in the testing sidebar. In the browser window opened by Codegen, interact with your application as a user would to perform a search:
-    * [] Navigate to the home page (e.g., `http://localhost:3000`).
-    * [] Click the search icon or field.
-    * [] Type your search term (e.g., "Twisters").
-    * [] Press Enter or click the search button.
+1. [] Start a new recording by pressing **Record new** in the testing sidebar. In the browser window opened by Codegen
+2. [] Navigate to the home page (e.g., `http://localhost:3000`).
+3. [] Click the search icon or field.
+4. [] Type your search term (e.g., "Twisters").
+5. [] Press Enter or click the search button.
 
 As you interact with the browser, Playwright's Codegen will automatically generate the corresponding test code in the Playwright Inspector window.
 
@@ -28,9 +28,8 @@ test('search for "Twisters" movie', async ({ page }) => {
 
 ## Step 2: Generate Assertions
 Use the Codegen toolbar to add assertions.
-  - [] click on the assert text icon and click on the main page heading. This assertion checks the text of the element within the specified locator.
-  - [] click on the assert snapshot and click on the movie poster. This assertion checks the accessible name and role of elements within the specified locator.
-
+1. [] click on the assert text icon and click on the main page heading. This assertion checks the text of the element within the specified locator.
+2. [] click on the assert snapshot and click on the movie poster. This assertion checks the accessible name and role of elements within the specified locator.
 
 ```ts
 await expect(page.getByRole('heading', { level: 1 })).toHaveText('Twisters');
@@ -43,9 +42,9 @@ await expect(page.getByRole('main')).toMatchAriaSnapshot(`
 
 ### Differences between **toHaveText** and **toMatchAriaSnapshot**
 
-The **toHaveText** assertion targets a specific element, like the **<h1>** heading, and verifies that its exact visible text content matches the provided string ("Twisters").
+The **toHaveText** assertion targets a specific element, like the **"<h1>"** heading, and verifies that its exact visible text content matches the provided string ("Twisters").
 
-In contrast, **toMatchAriaSnapshot** examines a larger region, such as the **<main>** content area, and checks its overall accessible structure—including element roles, names, and levels—against a stored snapshot. While **toHaveText** focuses on the precise visual text of one element, **toMatchAriaSnapshot** validates the semantic structure and accessibility of potentially multiple elements within a section.
+In contrast, **toMatchAriaSnapshot** examines a larger region, such as the **"<main>"** content area, and checks its overall accessible structure—including element roles, names, and levels—against a stored snapshot. While **toHaveText** focuses on the precise visual text of one element, **toMatchAriaSnapshot** validates the semantic structure and accessibility of potentially multiple elements within a section.
 
 ### Step 3: Manually add assertions to verify the application's state after the search:
 
@@ -90,8 +89,8 @@ test('search for "Twisters" movie and navigate to details page', async ({ page }
 ### Step 5: Create another test for a movie that does not exist
 1. [] Use Codegen to record the search interaction for a movie that does not exist (e.g., "NonExistentMovie").
 2. [] Add assertions to check the state of the application when no results are found. For example:
-    *   use **toHaveURL** to check the search term.
-    *   Use **toMatchAriaSnapshot** to verify the message displayed when no results are found.
+  * use **toHaveURL** to check the search term.
+  * Use **toMatchAriaSnapshot** to verify the message displayed when no results are found.
 3. [] Check that you can navigate back to the home page.
 
 ```ts
@@ -146,7 +145,7 @@ async function searchForMovie(page: Page, movie: string) {
 
 ### Step 7: Refactor the Test
 
-1. [] Call your **searchForMovie** helper function in both your tests passing in the **page** and the movie name.
+- [] Call your **searchForMovie** helper function in both your tests passing in the **page** and the movie name.
 
 ```ts
 test('search for "Twisters" movie', async ({ page }) => {
@@ -166,7 +165,7 @@ test('search for "NonExistentMovie" movie', async ({ page }) => {
 
 ### Step 9: Run your test to ensure it works correctly.
 
-1. [] Run your test in VS Code or by using the command line: `npx playwright test search.spec.ts`
+- [] Run your test in VS Code or by using the command line: `npx playwright test search.spec.ts`
 
 Helper functions are a great way to keep your tests DRY (Don't Repeat Yourself) and make them easier to maintain. By encapsulating the search logic in a function, you can easily reuse it across multiple tests without duplicating code.
 

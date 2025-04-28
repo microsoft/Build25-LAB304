@@ -23,19 +23,12 @@ Playwright's UI Mode offers an intuitive visual interface for running and debugg
 4.  **Time Travel:** Use the slider or click directly on actions to "time travel" through the test execution, observing the page state at each step.
 
 
-## Debugging a Failing Test with AI
+## Debugging a Failing Test
 
 1. [] **Identify the Failing Test:** In the UI Mode window, failing tests will be marked clearly (usually with a red 'x'). Click on the failed test in the left-hand sidebar to select it.
 2. [] **Navigate to the Errors Tab:** In the central panel displaying the test details, locate and click on the **Errors** tab. This tab shows the specific error message, the call log leading up to the failure, and often a snapshot of the page state when the error occurred.
-3. [] **Copy the AI Prompt:** Within the **Errors** tab, look for a button labeled **Copy Prompt**. Clicking this button copies a pre-formatted prompt containing the error details, test source code, and page snapshot to your clipboard.
-4. [] **Paste into Copilot Chat:** Open GitHub Copilot Chat in your VS Code editor. Paste the content you just copied from the Playwright UI Mode directly into the chat input.
-5. [] **Ask for Help:** Copilot Chat will receive the context of the failed test and the error. Ask it to explain the failure and suggest a fix, for example: "Explain why this test failed and provide a fix."
-
-Copilot Chat can analyze the provided information and often pinpoint the cause of the error (like a timing issue, incorrect locator, or flawed assertion) and suggest code modifications based on Playwrights best practices.
-
-Fix the test in VS Code based on Copilot's suggestions. You can also ask follow-up questions for further clarification or assistance.
-
-6. [] **Re-run the Test:** After making the suggested changes, return to the Playwright UI Mode and re-run the test if you haven't activated watch mode, to verify if the issue is resolved. 
+3. [] **Fix the test:** 
+4. [] **Re-run the Test:** After making the suggested changes, return to the Playwright UI Mode and re-run the test if you haven't activated watch mode, to verify if the issue is resolved. 
 
 ## Viewing Traces
 
