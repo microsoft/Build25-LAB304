@@ -8,17 +8,17 @@ Playwright Codegen is a tool that helps you automatically generate test code. It
 
 As you interact, Codegen translates these actions into Playwright test script code. This generated code can then be saved into a test file, providing a quick starting point for writing your end-to-end tests. You can use Codegen either through the integrated Playwright VS Code extension or via a command-line interface (npx playwright's Codegen).
 
-## Method 1: Using the VS Code Extension (Recommended)
+## Recording Tests using the VS Code Extension
 
 The Playwright VS Code extension provides an integrated way to record tests directly within your editor.
 
 1. [] **Open the Testing Sidebar:** Click on the Testing icon (looks like a beaker) in the VS Code Activity Bar on the left.
-2. [] **Start Recording:** Find the "Record new" button (often near the top of the Testing sidebar) and click it.
-    *   This will open a new browser window controlled by Playwright.
+2. [] **Start Recording:** Find the "Record new" button (often near the top of the Testing sidebar) and click it. This will open a new browser window controlled by Playwright.
 3. [] **Interact with your application:** Perform the actions you want to test in the browser window. For example:
   * Navigate to the application URL (e.g., `http://localhost:3000`).
   * Click the "Log In" button.
-  * Fill in the email and password fields.
+  * Fill in an email with a dummy `me@example.com`.
+  * Fill in the password field `111`.
   * Click the login button.
   * Click the user profile button.
   * Click the logout button.
