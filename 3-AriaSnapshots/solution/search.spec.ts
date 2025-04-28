@@ -10,8 +10,8 @@ test('search for "Twisters" movie', async ({ page }) => {
 
   // Verify that the search results contain an image with the alt text matching 'Twisters'
   await expect(
-    page.getByLabel('movie').filter({ hasText: 'Twisters' }).locator('img[alt="poster of Twisters"]')
-  ).toBeVisible();
+    page.getByRole('list').getByLabel('movie').filter({ hasText: 'Twisters' }).locator('img')
+  ).toHaveAttribute('alt', 'poster of Twisters');
 
   // Click on the link for the movie 'Twisters'
   await page.getByRole('link', { name: /twisters/i }).click();

@@ -35,6 +35,10 @@ export default defineConfig({
   },
   captureGitInfo: { commit: true, diff: true },
 
+  expect: {
+    timeout: 10_000, 
+  },
+
   /* Configure projects for major browsers */
   projects: [
     {
