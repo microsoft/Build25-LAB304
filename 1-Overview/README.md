@@ -31,21 +31,6 @@ Here's a quick look at the folder layout:
 
 ---
 
-## ⚙️ Understanding the Config
-
-Open the file `playwright.config.ts`. Let’s look at a few important parts:
-
-- **baseURL: 'http://localhost:3000'**  
-  This tells Playwright where your app will be running. Make sure the app is running before you run tests!
-
-- **workers**  
-  This controls how many tests run in parallel. We’ll modify this later in the workshop.
-
-- **trace: 'on-first-retry'**  
-  This enables trace recording *only if* a test fails and retries.
-
----
-
 ## ▶️ Start the App
 
 Let’s run the application so you can test it.

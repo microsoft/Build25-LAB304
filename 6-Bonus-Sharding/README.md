@@ -64,6 +64,6 @@ jobs:
 ## Check-in
 
 By completing this section, you should understand:
-*   What sharding is and why it's beneficial for large test suites.
-*   How to run a specific shard of your tests locally using the **--shard** command-line option.
-*   How to configure your GitHub Actions workflow to run tests in parallel across multiple shards, leading to faster feedback cycles.
+* What sharding is and why it's beneficial for large test suites.
+* How to run a specific shard of your tests locally using the **--shard** command-line option.
+* How to configure your GitHub Actions workflow to run tests in parallel across multiple shards, leading to faster feedback cycles.
