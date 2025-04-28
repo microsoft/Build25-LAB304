@@ -116,8 +116,8 @@ test('sort by with api mocking', { tag: '@mocking' }, async ({ page }) => {
     // Check the text content for all the movies contains an array with the following
     await expect(movieTitles)
       .toHaveText([
-        'The Garfield movie',
         'Deadpool and Wolverine',
+        'The Garfield movie',
         'Sonic the Hedgehog 3',
         'Kung Fu Panda 4',
       ]);
