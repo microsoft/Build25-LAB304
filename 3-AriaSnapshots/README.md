@@ -42,9 +42,9 @@ await expect(page.getByRole('main')).toMatchAriaSnapshot(`
 
 ### Differences between **toHaveText** and **toMatchAriaSnapshot**
 
-The **toHaveText** assertion targets a specific element, like the **"<h1>"** heading, and verifies that its exact visible text content matches the provided string ("Twisters").
+The **toHaveText** assertion targets a specific element, like the **"h1"** heading, and verifies that its exact visible text content matches the provided string ("Twisters").
 
-In contrast, **toMatchAriaSnapshot** examines a larger region, such as the **"<main>"** content area, and checks its overall accessible structure—including element roles, names, and levels—against a stored snapshot. While **toHaveText** focuses on the precise visual text of one element, **toMatchAriaSnapshot** validates the semantic structure and accessibility of potentially multiple elements within a section.
+In contrast, **toMatchAriaSnapshot** examines a larger region, such as the **"main"** content area, and checks its overall accessible structure—including element roles, names, and levels—against a stored snapshot. While **toHaveText** focuses on the precise visual text of one element, **toMatchAriaSnapshot** validates the semantic structure and accessibility of potentially multiple elements within a section.
 
 ### Step 3: Manually add assertions to verify the application's state after the search:
 
