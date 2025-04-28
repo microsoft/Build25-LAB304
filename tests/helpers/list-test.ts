@@ -30,6 +30,7 @@ export const listTest = baseTest.extend<{ listPage: Page }>({
 
     await listTest.step('add image to list', async () => {
       await page.getByRole('link', { name: 'Choose Image' }).click();
+      await page.waitForURL('/list/choose-image*');
       const movie = page
         .getByRole('listitem', { name: 'movie' })
         .filter({ hasText: /Garfield/ })
