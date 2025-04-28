@@ -12,17 +12,13 @@ Sharding is a technique used to divide a large test suite into smaller, independ
 
 ## How to Use Sharding in Playwright
 
-Playwright makes sharding easy with the `--shard` command-line option. This option tells Playwright which shard to run and the total number of shards.
+Playwright makes sharding easy with the **--shard** command-line option. This option tells Playwright which shard to run and the total number of shards.
 
 **Running Shards Locally:**
 
-You specify the shard to run using the format `currentShard/totalShards` (where shards are 1-indexed).
+You specify the shard to run using the format **currentShard/totalShards** (where shards are 1-indexed).
 
-For example, to split your tests into 4 shards and run the *second* shard, you would use:
-
-```bash
-npx playwright test --shard=2/4
-```
+For example, to split your tests into 4 shards and run the *second* shard, you would use: `npx playwright test --shard=2/4`
 You would typically run each shard command in a separate terminal or process to achieve parallelism locally.
 
 
@@ -30,7 +26,7 @@ You would typically run each shard command in a separate terminal or process to 
 
 Sharding is particularly powerful in CI/CD environments like GitHub Actions, where you can easily spin up multiple runners (jobs) to execute shards in parallel.
 
-Modify the `Run Playwright tests` step in your workflow (e.g., `.github/workflows/playwright.yml`) to use sharding. You'll typically use the GitHub Actions matrix strategy to create multiple jobs, each running a different shard.
+Modify the **Run Playwright tests** step in your workflow (e.g., **.github/workflows/playwright.yml**) to use sharding. You'll typically use the GitHub Actions matrix strategy to create multiple jobs, each running a different shard.
 
 **Example Workflow Snippet (using matrix):**
 
@@ -69,5 +65,5 @@ jobs:
 
 By completing this section, you should understand:
 *   What sharding is and why it's beneficial for large test suites.
-*   How to run a specific shard of your tests locally using the `--shard` command-line option.
+*   How to run a specific shard of your tests locally using the **--shard** command-line option.
 *   How to configure your GitHub Actions workflow to run tests in parallel across multiple shards, leading to faster feedback cycles.

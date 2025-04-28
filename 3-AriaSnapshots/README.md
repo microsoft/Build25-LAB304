@@ -2,18 +2,18 @@
 
 ## Goal
 
-This section focuses on using Playwright's Codegen to generate a search test, and add various assertions like `toMatchAriaSnapshot`, `toHaveURL`, and `toHaveAttribute` to verify application state, and refactoring the generated code into reusable helper functions for cleaner, more maintainable tests.
+This section focuses on using Playwright's Codegen to generate a search test, and add various assertions like **toMatchAriaSnapshot**, **toHaveURL**, and **toHaveAttribute** to verify application state, and refactoring the generated code into reusable helper functions for cleaner, more maintainable tests.
 
 ## Step 1: Record the Search Interaction
 
 1. In the browser window opened by Codegen, interact with your application as a user would to perform a search:
-    * []  Navigate to the home page (e.g., `http://localhost:3000`).
+    * [] Navigate to the home page (e.g., `http://localhost:3000`).
     * [] Click the search icon or field.
     * [] Type your search term (e.g., "Twisters").
     * [] Press Enter or click the search button.
     * [] Click on the search results link to navigate to the movie detail page.
 
-As you interact with the browser, Playwright Codegen will automatically generate the corresponding test code in the Playwright Inspector window.
+As you interact with the browser, Playwright's Codegen will automatically generate the corresponding test code in the Playwright Inspector window.
 
 ```ts
 import { test, expect } from '@playwright/test';
@@ -44,21 +44,21 @@ await expect(page.getByRole('main')).toMatchAriaSnapshot(`
 ```
 
 
-### Differences between `toHaveText` and `toMatchAriaSnapshot`
+### Differences between **toHaveText** and **toMatchAriaSnapshot**
 
-The `toHaveText` assertion targets a specific element, like the `<h1>` heading, and verifies that its exact visible text content matches the provided string ("Twisters").
+The **toHaveText** assertion targets a specific element, like the **<h1>** heading, and verifies that its exact visible text content matches the provided string ("Twisters").
 
-In contrast, `toMatchAriaSnapshot` examines a larger region, such as the `<main>` content area, and checks its overall accessible structure—including element roles, names, and levels—against a stored snapshot. While `toHaveText` focuses on the precise visual text of one element, `toMatchAriaSnapshot` validates the semantic structure and accessibility of potentially multiple elements within a section.
+In contrast, **toMatchAriaSnapshot** examines a larger region, such as the **<main>** content area, and checks its overall accessible structure—including element roles, names, and levels—against a stored snapshot. While **toHaveText** focuses on the precise visual text of one element, **toMatchAriaSnapshot** validates the semantic structure and accessibility of potentially multiple elements within a section.
 
-Feel free to remove the `toHaveText` assertion and keep only the `toMatchAriaSnapshot` assertion.
+Feel free to remove the `toHaveText** assertion and keep only the **toMatchAriaSnapshot** assertion.
 
 
 ### Step 3: Manually add assertions to verify the application's state after the search:
 
 Before you click the link to the movie detail page, you can add assertions to check the state of the application. Here are some examples:
 
-1. [] `toHaveURL`: Use this to check if the page URL is correct or contains expected parameters. You can use a string for an exact match or a Regular Expression (/ /) for partial matches (useful for query parameters).
-2. [] `toHaveAttribute`: Use this to check if a specific element (found using a locator) has a particular attribute with the expected value. Again, the value can be a string or a Regular Expression.
+1. [] **toHaveURL**: Use this to check if the page URL is correct or contains expected parameters. You can use a string for an exact match or a Regular Expression (/ /) for partial matches (useful for query parameters).
+2. [] **toHaveAttribute**: Use this to check if a specific element (found using a locator) has a particular attribute with the expected value. Again, the value can be a string or a Regular Expression.
 
 ```ts
 await expect(page).toHaveURL(/searchTerm=twisters/);
@@ -79,7 +79,7 @@ npx playwright test search.spec.ts
 
 It's good practice to give your tests descriptive names that clearly state what they are verifying.
 
-To change the test name, simply edit the first argument (the string) passed to the `test` function.
+To change the test name, simply edit the first argument (the string) passed to the **test** function.
 
 **Example:**
 
@@ -100,8 +100,8 @@ test('search for "Twisters" movie and navigate to details page', async ({ page }
 ### Step 5: Create another test for a movie that does not exist
 1. [] Use Codegen to record the search interaction for a movie that does not exist (e.g., "NonExistentMovie").
 2. [] Add assertions to check the state of the application when no results are found. For example:
-    *   use `toHaveURL` to check the search term.
-    *   Use `toMatchAriaSnapshot` to verify the message displayed when no results are found.
+    *   use **toHaveURL** to check the search term.
+    *   Use **toMatchAriaSnapshot** to verify the message displayed when no results are found.
 3. [] Check that you can navigate back to the home page.
 
 ```ts
@@ -135,8 +135,8 @@ test('search for "NonExistentMovie" movie', async ({ page }) => {
 ### Step 6: Create a Reusable Search Function
 
 1. [] Create a helper function in your test file to encapsulate the search logic. This function should take the movie name as an argument and perform the search.
-2. [] Create a reusable locator for the search input field `const searchInput = `. This will help in maintaining the code and making it easier to update if the locator changes in the future.
-3. [] Use `test.step` to create a step for the search action. This will help in organizing your test and making it more readable.
+2. [] Create a reusable locator for the search input field **const searchInput = **. This will help in maintaining the code and making it easier to update if the locator changes in the future.
+3. [] Use **test.step** to create a step for the search action. This will help in organizing your test and making it more readable.
 
 ```ts
 import { test, expect, Page } from '@playwright/test';
@@ -156,7 +156,7 @@ async function searchForMovie(page: Page, movie: string) {
 
 ### Step 7: Refactor the Test
 
-1. [] Call your `searchForMovie` helper function in both your tests passing in the `page` and the movie name.
+1. [] Call your **searchForMovie** helper function in both your tests passing in the **page** and the movie name.
 
 ```ts
 test('search for "Twisters" movie', async ({ page }) => {
@@ -186,4 +186,4 @@ Helper functions are a great way to keep your tests DRY (Don't Repeat Yourself) 
 
 ## Check-in
 
-Ensure your `search.spec.ts` file contains two tests (successful and no results search) using the `searchForMovie` helper function and assertions like `toHaveURL`, `toHaveAttribute`, and `toMatchAriaSnapshot`. Compare your work against the solution in `3-AriaSnapshots/solution/search.spec.ts`.
+Ensure your **search.spec.ts** file contains two tests (successful and no results search) using the **searchForMovie** helper function and assertions like **toHaveURL**, **toHaveAttribute**, and **toMatchAriaSnapshot**. Compare your work against the solution in **3-AriaSnapshots/solution/search.spec.ts**.
