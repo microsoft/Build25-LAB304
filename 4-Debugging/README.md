@@ -10,7 +10,7 @@ Playwright's UI Mode offers an intuitive visual interface for running and debugg
 
 ## Running Tests in UI Mode
 
-1. [] **Open a second terminal in VS Code** Click on the plus button in the terminal window or in the **Terminal** menu select **New Terminal**.
+1. [] **Open a terminal in VS Code** Click on the plus button in the terminal window or in the **Terminal** menu select **New Terminal**.
 ![Open a second terminal in VS Code](../images/new-terminal.png)
 
 1. [] **Run the UI Mode command:** `npx playwright test --ui`
@@ -29,8 +29,8 @@ Playwright's UI Mode offers an intuitive visual interface for running and debugg
 
 1. [] **Identify the Failing Test:** In the UI Mode window, failing tests will be marked clearly (usually with a red 'x'). Click on the failed test in the left-hand sidebar to select it.
 2. [] **Navigate to the Errors Tab:** In the central panel displaying the test details, locate and click on the **Errors** tab. This tab shows the specific error message, the call log leading up to the failure, and often a snapshot of the page state when the error occurred.
-3. [] **Fix the test:** 
-4. [] **Re-run the Test:** After making the suggested changes, return to the Playwright UI Mode and re-run the test if you haven't activated watch mode, to verify if the issue is resolved. 
+3. [] **Fix the test:** See if you can identify the issue from the error message and call log. Then go back to VS Code and modify the test code accordingly.
+4. [] **Re-run the Test:** After making the suggested changes, return to the Playwright UI Mode and re-run the test if you haven't activated watch mode, to verify if the issue is resolved.
 
 ## Viewing Traces
 

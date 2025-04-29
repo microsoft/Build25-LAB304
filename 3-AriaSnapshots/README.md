@@ -9,36 +9,33 @@ This section focuses on using Playwright's Codegen to generate a search test, an
 1. [] Start a new recording by pressing **Record new** in the testing sidebar. In the browser window opened by Codegen
 2. [] Navigate to the home page (e.g., `http://localhost:3000`).
 3. [] Click the search icon or field.
-4. [] Type your search term (e.g., "Twisters").
-5. [] Press Enter or click the search button.
+4. [] Type your search term (e.g., "twisters").
+5. [] Click the search button.
+6. [] click on the assert text icon and click on the main page heading. This assertion checks the text of the element within the specified locator.
+7. [] click on the assert snapshot and click next to the movie poster. 
 
-As you interact with the browser, Playwright's Codegen will automatically generate the corresponding test code in the Playwright Inspector window.
+Your test code should look something like this:
 
 ```ts
 import { test, expect } from '@playwright/test';
 
-test('search for "Twisters" movie', async ({ page }) => {
-  await page.goto('');
-  await page.getByRole('banner').getByRole('search').click();
-  await page.getByPlaceholder('Search for a movie...').click();
-  await page.getByPlaceholder('Search for a movie...').fill('twisters');
-  await page.getByPlaceholder('Search for a movie...').press('Enter');
+test('test', async ({ page }) => {
+  await page.goto('http://localhost:3000/?category=Popular&page=1');
+  await page.getByRole('search').click();
+  await page.getByRole('textbox', { name: 'Search Input' }).fill('twisters');
+  await page.getByRole('textbox', { name: 'Search Input' }).press('Enter');
+  await page.getByRole('button', { name: 'Search for a movie' }).click();
+  await expect(page.locator('h1')).toContainText('twisters');
+  await expect(page.getByLabel('movies')).toMatchAriaSnapshot(`
+    - list "movies":
+      - listitem "movie":
+        - link "poster of Twisters Twisters rating":
+          - /url: /movie?id=tt12584954&page=1
+          - img "poster of Twisters"
+          - heading "Twisters" [level=2]
+    `);
 });
 ```
-
-## Step 2: Generate Assertions
-Use the Codegen toolbar to add assertions.
-1. [] click on the assert text icon and click on the main page heading. This assertion checks the text of the element within the specified locator.
-2. [] click on the assert snapshot and click on the movie poster. This assertion checks the accessible name and role of elements within the specified locator.
-
-```ts
-await expect(page.getByRole('heading', { level: 1 })).toHaveText('Twisters');
-
-await expect(page.getByRole('main')).toMatchAriaSnapshot(`
-  - heading "Twisters" [level=1]
-`);
-```
-
 
 ### Differences between **toHaveText** and **toMatchAriaSnapshot**
 
@@ -46,23 +43,11 @@ The **toHaveText** assertion targets a specific element, like the **"h1"** headi
 
 In contrast, **toMatchAriaSnapshot** examines a larger region, such as the **"main"** content area, and checks its overall accessible structure—including element roles, names, and levels—against a stored snapshot. While **toHaveText** focuses on the precise visual text of one element, **toMatchAriaSnapshot** validates the semantic structure and accessibility of potentially multiple elements within a section.
 
-### Step 3: Manually add assertions to verify the application's state after the search:
 
-Before you click the link to the movie detail page, you can add assertions to check the state of the application. Here are some examples:
-
-1. [] **toHaveURL**: Use this to check if the page URL is correct or contains expected parameters. You can use a string for an exact match or a Regular Expression (/ /) for partial matches (useful for query parameters).
-2. [] **toHaveAttribute**: Use this to check if a specific element (found using a locator) has a particular attribute with the expected value. Again, the value can be a string or a Regular Expression.
-
-```ts
-await expect(page).toHaveURL(/searchTerm=twisters/);
-
-await expect(page.getByRole('list').getByLabel('movie').filter({ hasText: 'Twisters' }).locator('img')).toHaveAttribute('alt', 'poster of Twisters');
-```
- 
-### Step 4: Run the Test
+### Step 4: Save and run the Test
 
 1. [] Save your test as **search.spec.ts** file.
-2. [] Run the test using the VS Code Test Explorer (click the play button next to the test) or the command line: `npx playwright test search.spec.ts`
+2. [] Run the test using the VS Code Test Explorer (click the play button next to the test)
    
 ### Modify the Test Name (Optional but Recommended)
 
@@ -86,89 +71,37 @@ test('search for "Twisters" movie and navigate to details page', async ({ page }
 });
 ```
 
-### Step 5: Create another test for a movie that does not exist
-1. [] Use Codegen to record the search interaction for a movie that does not exist (e.g., "NonExistentMovie").
+### Bonus Step: Create another test for a movie that does not exist
+1. [] Use Codegen to record the search interaction for a movie that does not exist (e.g., "non-existent-movie").
 2. [] Add assertions to check the state of the application when no results are found. For example:
-  * use **toHaveURL** to check the search term.
   * Use **toMatchAriaSnapshot** to verify the message displayed when no results are found.
 3. [] Check that you can navigate back to the home page.
+
+Your test code should look something like this:
 
 ```ts
 import { test, expect } from '@playwright/test';
 
-test('search for "NonExistentMovie" movie', async ({ page }) => {
-  await page.goto('');
-  await page.getByRole('banner').getByRole('search').click();
-  await page.getByPlaceholder('Search for a movie...').click();
-  await page.getByPlaceholder('Search for a movie...').fill('twisters');
-  await page.getByPlaceholder('Search for a movie...').press('Enter');
-  await page.getByRole('link', { name: "non existent movie" }).click();
-
-  await expect(page).toHaveURL(/searchTerm=non-existent-movie/);
-
+test('test', async ({ page }) => {
+  await page.goto('http://localhost:3000/?category=Popular&page=1');
+  await page.getByRole('search').click();
+  await page.getByRole('textbox', { name: 'Search Input' }).fill('non-existent-movie');
+  await page.getByRole('search').click();
+  await page.getByRole('button', { name: 'Search for a movie' }).click();
   await expect(page.getByRole('main')).toMatchAriaSnapshot(`
-    - heading "Sorry!"
-    - heading /There were no results for/
-    - img "Not found!"
-    - link "Home":
-      - button "Home":
-        - img
+    - main:
+      - heading "Sorry!" [level=3]
+      - heading "There were no results for non-existent-movie..." [level=4]
+      - img "Not found!"
+      - link "Home":
+        - /url: /?category=Popular&page=1
+        - button "Home":
+          - img
     `);
-
   await page.getByRole('button', { name: 'Home' }).click();
-
-  await expect(page).toHaveURL('/?category=Popular&page=1');
 });
 ```
-
-### Step 6: Create a Reusable Search Function
-
-1. [] Create a helper function in your test file to encapsulate the search logic. This function should take the movie name as an argument and perform the search.
-2. [] Create a reusable locator for the search input field **const searchInput = **. This will help in maintaining the code and making it easier to update if the locator changes in the future.
-3. [] Use **test.step** to create a step for the search action. This will help in organizing your test and making it more readable.
-
-```ts
-import { test, expect, Page } from '@playwright/test';
-
-async function searchForMovie(page: Page, movie: string) {
-  const searchInput = page.getByPlaceholder('Search for a movie...');
-  await test.step(`Search for "${movie}" movie`, async () => {
-    await page.getByRole('banner').getByRole('search').click();
-    await searchInput.click();
-    await searchInput.fill(movie);
-    await searchInput.press('Enter');
-  });
-}
-
-// ...both tests previously created
-```
-
-### Step 7: Refactor the Test
-
-- [] Call your **searchForMovie** helper function in both your tests passing in the **page** and the movie name.
-
-```ts
-test('search for "Twisters" movie', async ({ page }) => {
-  await page.goto('');
-
-  await searchForMovie(page, 'twisters');
-// ...rest of the test
-});
-
-test('search for "NonExistentMovie" movie', async ({ page }) => {
-  await page.goto('');
-
-  await searchForMovie(page, 'non existent movie');
-// ...rest of the test
-});
-```
-
-### Step 9: Run your test to ensure it works correctly.
-
-- [] Run your test in VS Code or by using the command line: `npx playwright test search.spec.ts`
-
-Helper functions are a great way to keep your tests DRY (Don't Repeat Yourself) and make them easier to maintain. By encapsulating the search logic in a function, you can easily reuse it across multiple tests without duplicating code.
 
 ## Check-in
 
-Ensure your **search.spec.ts** file contains two tests (successful and no results search) using the **searchForMovie** helper function and assertions like **toHaveURL**, **toHaveAttribute**, and **toMatchAriaSnapshot**. Compare your work against the solution in **3-AriaSnapshots/solution/search.spec.ts**.
+Ensure your **search.spec.ts** file contains a test that contains assertions including **toMatchAriaSnapshot**.
