@@ -11,8 +11,16 @@ This section focuses on using Playwright's Codegen to generate a search test, an
 3. [] Click the search icon or field.
 4. [] Type your search term (e.g., "twisters").
 5. [] Click the search button.
-6. [] click on the assert text icon and click on the main page heading. This assertion checks the text of the element within the specified locator.
-7. [] click on the assert snapshot and click next to the movie poster. 
+6. [] click on the assert text icon
+![assert-text](../images/assert-text.png)
+7. [] Click on the main page heading.
+![assert-text accept](../images/assert-text-accept.png)
+8. [] click on the assert snapshot
+![assert- snapshot](../images/assert-snapshot.png)
+9. [] click next to the movie poster. 
+![assert-snapshot area](../images/twisters-snapshot.png)
+10. [] Click the "red" button to stop the recording.
+![stop recording](../images/stop-recording.png) 
 
 Your test code should look something like this:
 
@@ -76,13 +84,15 @@ test('search for "Twisters" movie and navigate to details page', async ({ page }
 2. [] Add assertions to check the state of the application when no results are found. For example:
   * Use **toMatchAriaSnapshot** to verify the message displayed when no results are found.
 3. [] Check that you can navigate back to the home page.
+4. [] Modify the test name
+5. [] Runt the test to ensure it works correctly
 
 Your test code should look something like this:
 
 ```ts
 import { test, expect } from '@playwright/test';
 
-test('test', async ({ page }) => {
+test('search for non-existent-movie', async ({ page }) => {
   await page.goto('http://localhost:3000/?category=Popular&page=1');
   await page.getByRole('search').click();
   await page.getByRole('textbox', { name: 'Search Input' }).fill('non-existent-movie');

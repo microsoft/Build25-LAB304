@@ -1,61 +1,37 @@
-import { test, expect, Page } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
-test('search for "Twisters" movie', async ({ page }) => {
-  await page.goto('');
-
-  await searchForMovie(page, 'twisters');
-
-  // Verify that the URL contains the search term 'twisters'
-  await expect(page).toHaveURL(/searchTerm=twisters/);
-
-  // Verify that the search results contain an image with the alt text matching 'Twisters'
-  await expect(
-    page.getByRole('list').getByLabel('movie').filter({ hasText: 'Twisters' }).locator('img')
-  ).toHaveAttribute('alt', 'poster of Twisters');
-
-  // Click on the link for the movie 'Twisters'
-  await page.getByRole('link', { name: /twisters/i }).click();
-
-  // Verify that the main heading on the movie page is 'Twisters'
-  await expect(page.getByRole('main')).toMatchAriaSnapshot(`
-    - heading "Twisters" [level=1]
-  `);
+test('search for "Twisters" movie and navigate to details page', async ({ page }) => {
+  await page.goto('http://localhost:3000/?category=Popular&page=1');
+  await page.getByRole('search').click();
+  await page.getByRole('textbox', { name: 'Search Input' }).fill('twisters');
+  await page.getByRole('textbox', { name: 'Search Input' }).press('Enter');
+  await page.getByRole('button', { name: 'Search for a movie' }).click();
+  await expect(page.locator('h1')).toContainText('twisters');
+  await expect(page.getByLabel('movies')).toMatchAriaSnapshot(`
+    - list "movies":
+      - listitem "movie":
+        - link "poster of Twisters Twisters rating":
+          - /url: /movie?id=tt12584954&page=1
+          - img "poster of Twisters"
+          - heading "Twisters" [level=2]
+    `);
 });
 
 test('search for non-existent-movie', async ({ page }) => {
-  await page.goto('');
-
-  await searchForMovie(page, 'non-existent-movie');
-
-  // Verify that the URL contains the search term 'non-existent movie'
-  await expect(page).toHaveURL(/searchTerm=non-existent-movie/);
-
+  await page.goto('http://localhost:3000/?category=Popular&page=1');
+  await page.getByRole('search').click();
+  await page.getByRole('textbox', { name: 'Search Input' }).fill('non-existent-movie');
+  await page.getByRole('search').click();
+  await page.getByRole('button', { name: 'Search for a movie' }).click();
   await expect(page.getByRole('main')).toMatchAriaSnapshot(`
-    - heading "Sorry!"
-    - heading /There were no results for/
-    - img "Not found!"
-    - link "Home":
-      - button "Home":
-        - img
+    - main:
+      - heading "Sorry!" [level=3]
+      - heading "There were no results for non-existent-movie..." [level=4]
+      - img "Not found!"
+      - link "Home":
+        - /url: /?category=Popular&page=1
+        - button "Home":
+          - img
     `);
-
-  await test.step('Navigate back to homepage', async () => {
-    await page.getByRole('button', { name: 'Home' }).click();
-
-    // Verify that the URL is the homepage URL with the default category and page
-    await expect(page).toHaveURL('/?category=Popular&page=1');
-  });
+  await page.getByRole('button', { name: 'Home' }).click();
 });
-
-/**
- * Searches for a movie using the provided page and movie title.
- */
-async function searchForMovie(page: Page, movie: string) {
-  const searchInput = page.getByPlaceholder('Search for a movie...');
-  await test.step(`Search for "${movie}" movie`, async () => {
-    await page.getByRole('banner').getByRole('search').click();
-    await searchInput.click();
-    await searchInput.fill(movie);
-    await searchInput.press('Enter');
-  });
-}
