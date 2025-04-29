@@ -6,7 +6,7 @@ Learn how to use Playwright's UI Mode for interactive debugging and leverage AI 
 
 ## Overview
 
-Playwright's UI Mode offers an intuitive visual interface for running and debugging tests interactively. When a test fails, UI Mode displays comprehensive details such as error messages, call logs, and page snapshots, making it easier to pinpoint issues. Additionally, you can streamline troubleshooting by using the **Copy Prompt** button in the Errors tab—simply paste the copied prompt into GitHub Copilot Chat in VS Code to get AI-powered explanations and suggested fixes for your test failures.
+Playwright's UI Mode offers an intuitive visual interface for running and debugging tests interactively. When a test fails, UI Mode displays comprehensive details such as error messages, call logs, and page snapshots, making it easier to pinpoint issues. Additionally, you can streamline troubleshooting by using the **Copy Prompt** button in the Errors tab. Simply paste the copied prompt into GitHub Copilot Chat in VS Code to get AI-powered explanations and suggested fixes for your test failures.
 
 ## Running Tests in UI Mode
 

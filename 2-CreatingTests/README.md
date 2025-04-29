@@ -21,7 +21,7 @@ The Playwright VS Code extension provides an integrated way to record tests dire
 
 This will open a new browser window controlled by Playwright.
 
-1. [] Navigate to the application URL (e.g., `http://localhost:3000`).  az
+1. [] Navigate to the application URL (e.g., `http://localhost:3000`).
 ![navigate to app](../images/navigate-to-app.png)
 
 2. [] Click the "Log In" button.
@@ -42,14 +42,17 @@ This will open a new browser window controlled by Playwright.
 7. [] Click the logout button.
 ![click logout](../images/logout.png)
 
-1.  [] **Stop Recording:** Once you've recorded the desired steps, click the "Cancel" button in VS Code.
+## Stop Recording
 
-![cancel recording](../images/cancel-recording.png)
+1. [] **Stop Recording:** Once you've recorded the desired steps, click the "red" button to stop the recording.
 
-5. [] **Review and Save the Code:** VS Code will automatically generate the test code in a new editor window.
+## Review and Save the Code
+
+
+1. [] **Review and Save the Code:** VS Code will automatically generate the test code in a new editor window.
   * Review the generated code.
   * Save the file in your **tests/logged-out** directory with a descriptive name (e.g., **auth.spec.ts**).
-6. [] **Run your new test:** Press the **Play button** next to the test in VS Code to ensure it works correctly.
+3. [] **Run your new test:** Press the **Play button** next to the test in VS Code to ensure it works correctly.
 
 ## Securely storing credentials in tests
 

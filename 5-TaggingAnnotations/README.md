@@ -96,6 +96,7 @@ Annotations are useful for linking tests to external information, like bug repor
   },
 }
 ```
+Your test will now look like this:
 
 ```ts
 test('dynamic content for first upcoming movie', {
