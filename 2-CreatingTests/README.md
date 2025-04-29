@@ -51,13 +51,13 @@ This will open a new browser window controlled by Playwright.
   * Save the file in your **tests/logged-out** directory with a descriptive name (e.g., **auth.spec.ts**).
 6. [] **Run your new test:** Press the **Play button** next to the test in VS Code to ensure it works correctly.
 
-## Storing Credentials Securely with a .env File
+## Securely storing credentials in tests
 
 It's important not to hardcode sensitive information like usernames and passwords directly into your tests. A common practice is to use environment variables stored in a **.env** file. See the **example.env** file. 
 
-**We have safely stored the credentials for you so you just need to update the test to use them.**
+**We have safely stored the credentials for you in the System Environment Settings for demo purposes, so you just need to update the test to use them.**
 
-1. [] Update the test code to use environment variables instead of hardcoded values. 
+1. [] **Update the test code to use environment variables** instead of hardcoded values. 
    * Open the **auth.spec.ts** file you just created.
    * Replace the hardcoded email and password with the following code:
 
@@ -67,7 +67,7 @@ await page.getByRole('textbox', { name: 'Email address' }).fill(process.env.MOVI
 await page.getByRole('textbox', { name: 'Password' }).fill(process.env.MOVIES_PASSWORD!);
 ```
 
-2. [] **Run your new test:**
+1. [] **Run your test:**
 Save the file and run your test again to ensure the generated test works correctly with the environment variables.
 
 ## Check-in
