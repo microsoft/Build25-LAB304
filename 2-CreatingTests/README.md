@@ -17,7 +17,7 @@ The Playwright VS Code extension provides an integrated way to record tests dire
 ![open the testing sidebar](../images/testing-sidebar.png)
 
 2. [] **Start Recording:** Find the "Record new" button (often near the top of the Testing sidebar) and click it.
-![record a new test](../images/testing-sidebar.png)
+![record a new test](../images/record-new.png)
 
 This will open a new browser window controlled by Playwright.
 
