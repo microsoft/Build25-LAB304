@@ -10,10 +10,12 @@ Playwright's UI Mode offers an intuitive visual interface for running and debugg
 
 ## Running Tests in UI Mode
 
-1. [] **Open your terminal.**
-2. [] **Run the UI Mode command:** `npx playwright test --ui`
+1. [] **Open a second terminal in VS Code** Click on the plus button in the terminal window or in the **Terminal** menu select **New Terminal**.
+![Open a second terminal in VS Code](../images/new-terminal.png)
+
+1. [] **Run the UI Mode command:** `npx playwright test --ui`
     This will open the Playwright UI Mode window, listing all your tests.
-3. Press the play button to run all tests or select specific tests to run by clicking on them in the left-hand sidebar.
+2. Press the play button to run all tests or select specific tests to run by clicking on them in the left-hand sidebar.
 
 ### Stepping Through Test Execution
 

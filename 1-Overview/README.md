@@ -53,27 +53,18 @@ Run the application.
 ---
 
 ## ✅ Run Your First Test
-1. [] **Open a second terminal in VS Code** Click on the plus button in the terminal window or in the **Terminal** menu select **New Terminal**.
-![Open a second terminal in VS Code](../images/new-terminal.png)
 
+1. [] **Open the movie-list test**: Navigate to the **tests/logged-out** folder in the Explorer panel and double-click on **movie-list.spec.ts**.
+![Open a test](../images/open-test.png)
 
-2. [] **Run the movie-list test**: 
-`npx playwright test movie-list.spec.ts`
-
-You should see the results in the terminal that two tests passed.
-
-![tests passed in terminal](../images/tests-passed.png)
-
+2. [] **Run the test**: Click on the play button next to the test name:
+![Run the test in vs code](../images/run-test.png)
 
 ---
 
 ## 💬 What’s Happening?
 
-We only ran one test file but as it contained two tests both tests ran. Open up the HMTL report in your browser to see detailed results of the test runs.
-1. [] Open the HTML report by running the command:
-`npx playwright show-report`
-
-Take a moment to skim the report and view the test results. You can click on individual tests to see more details, including the steps taken during the test and any errors encountered.
+When you run the test, Playwright automatically launches a browser window and executes the test steps as if a real user were interacting with the app. Take a moment to switch back to VS Code and review the test code—notice how it describes the actions being performed (like navigating to a page or checking for specific content). This helps you understand exactly what the test is verifying and how Playwright simulates user behavior.
 
 - What is it trying to verify?
 - Is it checking elements, navigation, or content?
