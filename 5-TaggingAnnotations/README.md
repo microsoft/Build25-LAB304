@@ -20,7 +20,15 @@ Tags (**@tag**) are labels you add to tests or whole **describe** blocks (e.g., 
 ## Step 1: Add a Tag to Movie List Tests
 
 1. [] **Open:** **tests/logged-out/movie-list.spec.ts**.
-2. [] **Add**: Add the **@movies** tag to the **test** functions in this file.
+2. [] **Add**: Add the **@movies** tag to the **test** functions in this file. Tags go in the **test** options object, which is the second argument of the test function.
+
+```ts
+{
+  tag: '@movies',
+},
+```
+
+Both your tests will now look like this:
 
 ```ts
 // Example: tests/logged-out/movie-list.spec.ts
@@ -40,9 +48,9 @@ test('dynamic content for first upcoming movie', {
 ## Step 2: Run Tagged Tests
 
 - [] **Run only tests with the **@movies** tag:**
-  * Use the following command in your terminal: `npx playwright test --grep @movies`
+  * Use the following command in your terminal: `npx playwright test --grep "@movies"`
 
-**Bonus Tip:** To run all tests *except* those with the **@movies** tag, use **--grep-invert**: `npx playwright test --grep-invert @movies`
+**Bonus Tip:** To run all tests *except* those with the **@movies** tag, use **--grep-invert**: `npx playwright test --grep-invert "@movies"`
 
 ## Understanding Annotations
 
@@ -53,8 +61,12 @@ test('dynamic content for first upcoming movie', {
 
 ## Step 3: Skip a Test
 
-1. [] **Open:** **tests/logged-out/movie-list.spec.ts**.
-2. [] **Modify:** Add **.skip** to the first test function to prevent it from running.
+1. [] **Add .skip** to the first test function to prevent it from running.
+
+```ts
+test.skip
+```
+Your test will now look like this:
 
 ```ts
 // Example: tests/logged-out/movie-list.spec.ts
@@ -65,15 +77,27 @@ test.skip('Avengers: Infinity is the first top rated movie', {
 });
 ```
 
+2. [] **Run Tests Again:**
+  * Use the command line to run tests tagged with **@movies**: `npx playwright test --grep @movies`
+  * You should see that the first test is skipped, while the second test runs as expected.
+
 ## Step 4: Annotate a Test with an Issue Link
 
 Annotations are useful for linking tests to external information, like bug reports.
 
-1. [] **Open:** **tests/logged-out/movie-list.spec.ts**.
-2. [] **Modify:** Add an annotation object to the second test, linking it to a hypothetical GitHub issue.
+1. [] **Add an annotation object** to the second test, linking it to a hypothetical GitHub issue. The annotation object goes inside the **test** options object along with the tag we created earlier.
 
 ```ts
-// Example: tests/logged-out/movie-list.spec.ts
+{
+  tag: '@movies',
+  annotation: {
+    type: 'issue',
+    description: 'Link to relevant issue: https://github.com/microsoft/playwright/issues/23180',
+  },
+}
+```
+
+```ts
 test('dynamic content for first upcoming movie', {
   tag: '@movies',
   annotation: {
@@ -85,13 +109,11 @@ test('dynamic content for first upcoming movie', {
 });
 ```
 
-## Step 5: Run Tests and View Report
-
-Now, let's run the tagged tests again to see the effect of the skip and the annotation.
-
-1. [] **Run Tests:**
+2. [] **Run Tests Again:**
   * Use the command line to run tests tagged with **@movies**: `npx playwright test --grep @movies`
-2. [] **View Report:**
+  * You should see the second test run successfully, and the annotation will be visible in the HTML report.
+
+3. [] **View the HTML Report:**
   * Open the HTML report: `npx playwright show-report`
   * You should see one test passed and one test skipped.
   * Click on the passed test (**dynamic content for first upcoming movie**) to view its details, including the 'issue' annotation you added.

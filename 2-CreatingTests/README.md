@@ -61,7 +61,7 @@ It's important not to hardcode sensitive information like usernames and password
    * Open the **auth.spec.ts** file you just created.
    * Replace the hardcoded email and password with the following code:
 
-```typescript
+```
 await page.getByRole('textbox', { name: 'Email address' }).fill(process.env.MOVIES_USERNAME!);
 
 await page.getByRole('textbox', { name: 'Password' }).fill(process.env.MOVIES_PASSWORD!);
@@ -72,4 +72,4 @@ Save the file and run your test again to ensure the generated test works correct
 
 ## Check-in
 
-Compare your generated **auth.spec.ts** file with the one provided in the **solution** folder for this section. Verify that your test correctly performs the login and logout steps and utilizes environment variables for the username and password, rather than hardcoding them.
+Compare your generated **auth.spec.ts** file with the one provided in the **2-CreatingTests/solution** folder. Verify that your test correctly performs the login and logout steps and utilizes environment variables for the username and password, rather than hardcoding them.
