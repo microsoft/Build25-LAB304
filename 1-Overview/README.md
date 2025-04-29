@@ -45,9 +45,8 @@ Run the application.
 
 ![Open a terminal in VS Code](../images/open-terminal.png)
 
-1. [] **Install dependencies**: `npm install` 
 2. [] **Start the app**: `npm run dev`
-3. [] Open your browser and navigate to `http://localhost:3000` to see the app running.
+3. [] Open your browser and navigate to `http://localhost:3000` to see the app running. You can also command click on the url in the terminal to open it in your default browser.
 
 ---
 
