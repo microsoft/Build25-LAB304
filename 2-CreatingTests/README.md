@@ -13,7 +13,14 @@ As you interact, Codegen translates these actions into Playwright test script co
 The Playwright VS Code extension provides an integrated way to record tests directly within your editor.
 
 1. [] **Open the Testing Sidebar:** Click on the Testing icon (looks like a beaker) in the VS Code Activity Bar on the left.
-2. [] **Start Recording:** Find the "Record new" button (often near the top of the Testing sidebar) and click it. This will open a new browser window controlled by Playwright.
+
+![open the testing sidebar](../images/testing-sidebar.png)
+
+2. [] **Start Recording:** Find the "Record new" button (often near the top of the Testing sidebar) and click it.
+![record a new test](../images/testing-sidebar.png)
+
+This will open a new browser window controlled by Playwright.
+
 3. [] **Interact with your application:** Perform the actions you want to test in the browser window. For example:
   * Navigate to the application URL (e.g., `http://localhost:3000`).
   * Click the "Log In" button.
@@ -22,11 +29,15 @@ The Playwright VS Code extension provides an integrated way to record tests dire
   * Click the login button.
   * Click the user profile button.
   * Click the logout button.
+
 4. [] **Stop Recording:** Once you've recorded the desired steps, click the "Cancel" or "Record" button again in the Testing sidebar or close the browser window.
+
+![cancel recording](../images/cancel-recording.png)
+
 5. [] **Review and Save the Code:** VS Code will automatically generate the test code in a new editor window.
   * Review the generated code.
   * Save the file in your **tests/logged-out** directory with a descriptive name (e.g., **auth.spec.ts**).
-6. [] **Run your new test:** Use the Playwright command: `npx playwright test logged-in/auth.spec.ts` or the **Play button** next to the test in the Testing sidebar to ensure it works correctly.
+6. [] **Run your new test:** Use the Playwright command: `npx playwright test logged-out/auth.spec.ts` or the **Play button** next to the test in the Testing sidebar to ensure it works correctly.
 
 ## Storing Credentials Securely with a .env File
 
