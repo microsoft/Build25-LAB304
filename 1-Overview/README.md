@@ -16,6 +16,12 @@ In this section, you'll get familiar with the project setup and run your first P
 
 ## 🗂 Project Structure Overview
 
+1. [] Open up VS Code to explore the project structure.
+
+![Open the project in VS Code](../images/open-vs-code.png)
+
+Open the project folder in VS Code to get an overview of the files and directories. This will help you understand where the application code, tests, and configuration files are located.
+
 Here's a quick look at the folder layout:
 
 - **movies-app/**  
@@ -33,30 +39,41 @@ Here's a quick look at the folder layout:
 
 ## ▶️ Start the App
 
-Let’s run the application so you can test it.
+Run the application.
 
-1. [] **Open a terminal and install dependencies**:
-`npm install`
-   
-2. [] **Open a second terminal** at the project root (same level as tests/ and playwright.config.ts).
-`npm run dev`
+1. [] Open a new terminal in VS Code. You can do this by clicking on the **Terminal** menu and selecting **New Terminal** or using the shortcut (Ctrl + `).
 
-This starts the app on **http://localhost:3000**.
+![Open a terminal in VS Code](../images/open-terminal.png)
+
+![Open a terminal in VS Code](../images/open-terminal.png)
+2. [] **Install dependencies**: `npm install` 
+3. [] **Start the app**: `npm run dev`
+4. [] Open your browser and navigate to `http://localhost:3000` to see the app running.
 
 ---
 
 ## ✅ Run Your First Test
-[] **Open a second terminal** at the project root (same level as tests/ and playwright.config.ts) and run the movie-list test.
+1. [] **Open a second terminal in VS Code** Click on the plus button in the terminal window or in the **Terminal** menu select **New Terminal**.
+![Open a second terminal in VS Code](../images/new-terminal.png)
 
+
+2. [] **Run the movie-list test**: 
 `npx playwright test movie-list.spec.ts`
 
-You’ll see Playwright launch a browser, run the test, and print the result in the terminal.
+You should see the results in the terminal that two tests passed.
+
+![tests passed in terminal](../images/tests-passed.png)
+
 
 ---
 
 ## 💬 What’s Happening?
 
-Take a moment to skim the test file: tests/logged-out/movie-list.spec.ts
+We only ran one test file but as it contained two tests both tests ran. Open up the HMTL report in your browser to see detailed results of the test runs.
+1. [] Open the HTML report by running the command:
+`npx playwright show-report`
+
+Take a moment to skim the report and view the test results. You can click on individual tests to see more details, including the steps taken during the test and any errors encountered.
 
 - What is it trying to verify?
 - Is it checking elements, navigation, or content?
