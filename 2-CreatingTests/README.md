@@ -21,42 +21,54 @@ The Playwright VS Code extension provides an integrated way to record tests dire
 
 This will open a new browser window controlled by Playwright.
 
-3. [] **Interact with your application:** Perform the actions you want to test in the browser window. For example:
-  * Navigate to the application URL (e.g., `http://localhost:3000`).
-  * Click the "Log In" button.
-  * Fill in an email with a dummy `me@example.com`.
-  * Fill in the password field `111`.
-  * Click the login button.
-  * Click the user profile button.
-  * Click the logout button.
+1. [] Navigate to the application URL (e.g., `http://localhost:3000`).  az
+![navigate to app](../images/navigate-to-app.png)
 
-4. [] **Stop Recording:** Once you've recorded the desired steps, click the "Cancel" or "Record" button again in the Testing sidebar or close the browser window.
+2. [] Click the "Log In" button.
+![click the login button](../images/login-user-profile.png)
+
+3. [] Fill in the email with `me@example.com`.
+![fill in email](../images/email.png)
+
+4. [] Fill in the password field `111`.
+![fill-in-password](../images/password.png)
+
+5. [] Click the login button.
+![click the login button](../images/click-login.png)
+
+6. [] Click the user profile button.
+![click user profile](../images/click-user-profile.png)
+
+7. [] Click the logout button.
+![click logout](../images/logout.png)
+
+1.  [] **Stop Recording:** Once you've recorded the desired steps, click the "Cancel" button in VS Code.
 
 ![cancel recording](../images/cancel-recording.png)
 
 5. [] **Review and Save the Code:** VS Code will automatically generate the test code in a new editor window.
   * Review the generated code.
   * Save the file in your **tests/logged-out** directory with a descriptive name (e.g., **auth.spec.ts**).
-6. [] **Run your new test:** Use the Playwright command: `npx playwright test logged-out/auth.spec.ts` or the **Play button** next to the test in the Testing sidebar to ensure it works correctly.
+6. [] **Run your new test:** Press the **Play button** next to the test in VS Code to ensure it works correctly.
 
 ## Storing Credentials Securely with a .env File
 
-It's important not to hardcode sensitive information like usernames and passwords directly into your tests. A common practice is to use environment variables stored in a **.env** file. We have safely stored the credentials for you so now you just need to update the test to use them.
+It's important not to hardcode sensitive information like usernames and passwords directly into your tests. A common practice is to use environment variables stored in a **.env** file. See the **example.env** file. 
+
+**We have safely stored the credentials for you so you just need to update the test to use them.**
+
+1. [] Update the test code to use environment variables instead of hardcoded values. 
+   * Open the **auth.spec.ts** file you just created.
+   * Replace the hardcoded email and password with the following code:
 
 ```typescript
-// Example usage in a test file
-const username = process.env.MOVIES_USERNAME!;
-const password = process.env.MOVIES_PASSWORD!;
+await page.getByRole('textbox', { name: 'Email address' }).fill(process.env.MOVIES_USERNAME!);
 
-// Use username and password variables in your test steps
-await page.getByLabel('Email').fill(username);
-await page.getByLabel('Password').fill(password);
+await page.getByRole('textbox', { name: 'Password' }).fill(process.env.MOVIES_PASSWORD!);
 ```
 
-The **!** tells TypeScript that you are sure these variables will be defined (because they are loaded from **.env**).
-
-1. [] **Run your new test:**
-Save the file and run your tests using the Playwright command: `npx playwright test auth.spec.ts` to ensure the generated test works correctly or run the test using the VS Code extension by clicking the play button next to the test.
+2. [] **Run your new test:**
+Save the file and run your test again to ensure the generated test works correctly with the environment variables.
 
 ## Check-in
 
