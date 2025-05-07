@@ -47,5 +47,5 @@ You should now be equipped to apply these techniques to build robust and scalabl
 
 | Resources          | Links                             | Description        |
 |:-------------------|:----------------------------------|:-------------------|
-| Build session page | https://build.microsoft.com/sessions/SESSIONCODE | Event session page with downloadable recording, slides, resources, and speaker bio |
+| Build session page | https://build.microsoft.com/sessions/LAB304 | Event session page with downloadable recording, slides, resources, and speaker bio |
 
