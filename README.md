@@ -1,3 +1,7 @@
+<p align="center">
+<img src="img/banner.jpg" alt="decorative banner" width="1200"/>
+</p>
+
 # Build 2025 Lab 304: Real-World, Enterprise-Scale End-to-End Testing with Playwright
 
 In this lab, you will dive into end-to-end testing with Playwright using a sample movies app. You'll learn to generate tests with Codegen, write robust assertions including ARIA snapshots, manage credentials securely, debug effectively using UI Mode and traces, organize tests with tags and annotations, and optimize execution speed with sharding.
@@ -39,5 +43,9 @@ You should now be equipped to apply these techniques to build robust and scalabl
 -   [Playwright VS Code Extension](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright)
 -   [Playwright on GitHub](https://github.com/microsoft/playwright)
 
+## Session Resources 
 
+| Resources          | Links                             | Description        |
+|:-------------------|:----------------------------------|:-------------------|
+| Build session page | https://build.microsoft.com/sessions/LAB304 | Event session page with downloadable recording, slides, resources, and speaker bio |
 
