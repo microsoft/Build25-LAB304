@@ -1,0 +1,35 @@
+{
+  "name": "Playwright Movies Codespace",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-20",
+  "hostRequirements": {
+    "cpus": 4
+  },
+  "onCreateCommand": "bash -c 'if [ -f package-lock.json ]; then npm ci; else npm install; fi'",
+  "postCreateCommand": "npx playwright install --with-deps",
+  "postAttachCommand": {
+    "server": "npm run dev"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-playwright.playwright",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "playwright.reuseBrowser": true
+      }
+    },
+    "codespaces": {
+      "openFiles": ["README.md"]
+    }
+  },
+  "portsAttributes": {
+    "3000": {
+      "label": "Application",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "forwardPorts": [3000]
+}
