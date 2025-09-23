@@ -58,8 +58,6 @@ This will open a new browser window controlled by Playwright.
 
 It's important not to hardcode sensitive information like usernames and passwords directly into your tests. A common practice is to use environment variables stored in a **.env** file. See the **example.env** file. 
 
-**We have safely stored the credentials for you in the System Environment Settings for demo purposes, so you just need to update the test to use them.**
-
 1. [] **Update the test code to use environment variables** instead of hardcoded values. 
    * Open the **auth.spec.ts** file you just created.
    * Replace the hardcoded email and password with the following code:
