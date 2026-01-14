@@ -14,7 +14,7 @@
     "@loadable/component": "^5.13.1",
     "clsx": "^1.1.1",
     "dotenv": "^16.4.5",
-    "next": "^15.1.3",
+    "next": "^15.4.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-glider": "^2.0.1",
